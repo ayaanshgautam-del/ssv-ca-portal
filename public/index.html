@@ -1,0 +1,1137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Saxena Singhal & Vaid — CA Portal v2</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--bg:#F7F6F2;--sf:#fff;--tx:#1A1A18;--mu:#6B6B67;--bd:#E0DDD5;--ac:#1B4F72;--ac2:#2471A3;--gr:#1E8449;--am:#B7950B;--re:#C0392B;--te:#117A65;--r:12px}
+body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--tx);font-size:14px;min-height:100vh}
+.screen{display:none;min-height:100vh;flex-direction:column}.screen.active{display:flex}
+#ls{align-items:center;justify-content:center;background:linear-gradient(135deg,#0B2545,#1B4F72)}
+.lb{background:#fff;border-radius:20px;padding:36px 32px;width:360px;box-shadow:0 20px 60px rgba(0,0,0,.25)}
+.fl{text-align:center;margin-bottom:22px}
+.lm{width:52px;height:52px;background:#1B4F72;border-radius:14px;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;color:#fff;font-size:17px;font-family:'DM Serif Display',serif}
+.fl h1{font-family:'DM Serif Display',serif;font-size:19px;font-weight:400;line-height:1.3}
+.fl p{font-size:11px;color:#999;letter-spacing:.06em;text-transform:uppercase;margin-top:2px}
+.rtabs{display:flex;background:#F2F0EA;border-radius:9px;padding:3px;gap:3px;margin-bottom:16px}
+.rt{flex:1;padding:7px;text-align:center;border-radius:7px;cursor:pointer;font-size:12px;font-weight:500;color:#888;border:none;background:transparent;font-family:'DM Sans',sans-serif;transition:all .2s}
+.rt.active{background:#fff;color:#1B4F72;box-shadow:0 1px 3px rgba(0,0,0,.1)}
+.ig{margin-bottom:12px}.ig label{display:block;font-size:11px;font-weight:500;color:#666;margin-bottom:4px}
+.ig input{width:100%;padding:9px 12px;border:1.5px solid #E0DDD5;border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;color:#1A1A18;transition:border .2s}
+.ig input:focus{border-color:#2471A3}
+.lbtn{width:100%;padding:11px;background:#1B4F72;color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+.hint{font-size:11px;color:#aaa;text-align:center;margin-top:10px;line-height:1.6}
+.tnav{background:#0B2545;color:#fff;padding:0 18px;display:flex;align-items:center;justify-content:space-between;height:52px;flex-shrink:0}
+.brand{font-family:'DM Serif Display',serif;font-size:15px;color:#fff;display:flex;align-items:center;gap:8px}
+.btag{font-size:10px;font-family:'DM Sans',sans-serif;background:rgba(255,255,255,.15);padding:2px 8px;border-radius:20px;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.navr{display:flex;align-items:center;gap:8px;font-size:12px}
+.avt{width:30px;height:30px;border-radius:50%;background:#2471A3;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:11px}
+.nlo{background:rgba(255,255,255,.1);border:none;color:#fff;padding:4px 10px;border-radius:6px;font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.main{flex:1;padding:18px;overflow-y:auto}
+.stabs{display:flex;gap:7px;margin-bottom:16px;flex-wrap:wrap}
+.stab{padding:6px 13px;border-radius:8px;border:1.5px solid var(--bd);background:#fff;font-size:12px;font-weight:500;cursor:pointer;color:var(--mu);transition:all .2s;font-family:'DM Sans',sans-serif;position:relative}
+.stab.active{background:#1B4F72;color:#fff;border-color:#1B4F72}
+.tbdg{position:absolute;top:-5px;right:-5px;background:#C0392B;color:#fff;border-radius:50%;width:15px;height:15px;font-size:8px;display:flex;align-items:center;justify-content:center;font-weight:600}
+.g{display:grid;gap:12px}.g2{grid-template-columns:repeat(auto-fit,minmax(260px,1fr))}.g3{grid-template-columns:repeat(auto-fit,minmax(180px,1fr))}.g4{grid-template-columns:repeat(auto-fit,minmax(120px,1fr))}
+.card{background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:16px}
+.ct{font-size:10px;font-weight:500;color:var(--mu);letter-spacing:.06em;text-transform:uppercase;margin-bottom:9px}
+.sn{font-size:24px;font-weight:300;line-height:1}.sl{font-size:11px;color:var(--mu);margin-top:2px}
+.bdg{display:inline-flex;align-items:center;padding:2px 8px;border-radius:20px;font-size:11px;font-weight:500}
+.bg{background:#E8F5E9;color:#1E8449}.ba{background:#FEF9E7;color:#B7950B}.br{background:#FDEDEC;color:#C0392B}.bb{background:#EBF5FB;color:#1B4F72}.bp{background:#F3E5F5;color:#6A1B9A}
+.pb{background:#F0EDE5;border-radius:20px;height:5px;overflow:hidden}.pf{height:100%;border-radius:20px}
+.pgr{background:#1E8449}.pam{background:#F39C12}.pre{background:#E74C3C}.pbl{background:#2471A3}
+.sh{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.sh h3{font-size:14px;font-weight:500}.sh span{font-size:11px;color:var(--mu)}
+.etb{width:100%;border-collapse:collapse;font-size:12px;table-layout:fixed}
+.etb th{text-align:left;padding:9px 12px;font-size:10px;font-weight:500;color:var(--mu);letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--bd);background:#FAFAF8}
+.etb td{padding:10px 12px;border-bottom:1px solid #F0EDE5;vertical-align:middle;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.etb tr:last-child td{border-bottom:none}
+.crow{display:flex;align-items:center;padding:11px 15px;border-bottom:1px solid #F0EDE5;gap:11px}
+.cav{width:34px;height:34px;border-radius:50%;background:#EBF5FB;color:#1B4F72;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:12px;flex-shrink:0}
+.oi{padding:9px 11px;border-radius:7px;background:#FAFAF8;border-left:3px solid #2471A3;margin-bottom:7px}
+
+/* TASK ASSIGN */
+.ta-section{background:#fff;border-radius:var(--r);border:1px solid var(--bd);overflow:hidden;margin-bottom:12px}
+.ta-head{background:#1B4F72;color:#fff;padding:13px 17px}.ta-head h3{font-size:14px;font-weight:500}.ta-head p{font-size:11px;opacity:.75;margin-top:1px}
+.ta-form{padding:14px 17px;border-bottom:1px solid var(--bd);background:#FAFAF8}
+.ta-row{display:flex;gap:8px;flex-wrap:wrap;align-items:flex-end}
+.ta-f{display:flex;flex-direction:column;gap:4px}.ta-f label{font-size:10px;font-weight:500;color:var(--mu);text-transform:uppercase;letter-spacing:.04em}
+.ta-f select,.ta-f input{padding:7px 10px;border:1.5px solid var(--bd);border-radius:7px;font-size:12px;font-family:'DM Sans',sans-serif;outline:none;background:#fff;color:var(--tx)}
+.ta-f.grow{flex:1;min-width:130px}
+.abtn{padding:8px 14px;background:#1B4F72;color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;height:34px}
+.task-rows{padding:0}
+.task-row{display:flex;align-items:center;gap:9px;padding:10px 17px;border-bottom:1px solid #F5F2EC;flex-wrap:wrap}
+.task-row:last-child{border-bottom:none}
+.task-emp{font-size:11px;font-weight:500;background:#EBF5FB;color:#1B4F72;padding:2px 8px;border-radius:20px;white-space:nowrap;flex-shrink:0}
+.task-title{flex:1;font-size:13px;min-width:100px}.task-title.done-t{text-decoration:line-through;color:var(--mu)}
+.tpri{font-size:10px;font-weight:600;padding:2px 7px;border-radius:20px;white-space:nowrap}
+.ph{background:#FDEDEC;color:#C0392B}.pm{background:#FEF9E7;color:#B7950B}.pl{background:#E8F5E9;color:#1E8449}
+.xbtn{padding:3px 8px;border-radius:5px;border:1px solid var(--bd);background:#fff;font-size:10px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+.xbtn.done-btn{background:#E8F5E9;color:#1E8449;border-color:#1E8449}
+.ft-tabs{display:flex;gap:6px;padding:9px 17px;border-bottom:1px solid var(--bd);background:#FAFAF8;flex-wrap:wrap}
+.ft{padding:4px 10px;border-radius:6px;border:1px solid var(--bd);background:#fff;font-size:11px;font-weight:500;cursor:pointer;color:var(--mu);font-family:'DM Sans',sans-serif}
+.ft.active{background:#1B4F72;color:#fff;border-color:#1B4F72}
+
+/* COMPLIANCE CALENDAR */
+.comp-cal{background:#fff;border-radius:var(--r);border:1px solid var(--bd);overflow:hidden}
+.comp-cal-head{background:#0B2545;color:#fff;padding:14px 18px;display:flex;align-items:center;justify-content:space-between}
+.comp-cal-head h3{font-size:14px;font-weight:500}
+.comp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0}
+.comp-month{padding:14px 16px;border-right:1px solid var(--bd);border-bottom:1px solid var(--bd)}
+.comp-month:nth-child(3n){border-right:none}
+.comp-mname{font-size:12px;font-weight:600;color:var(--ac);margin-bottom:8px}
+.comp-item{display:flex;align-items:flex-start;gap:7px;padding:5px 0;border-bottom:1px solid #F5F2EC}
+.comp-item:last-child{border-bottom:none}
+.comp-date{font-size:10px;font-weight:600;color:#fff;background:#1B4F72;padding:2px 6px;border-radius:4px;white-space:nowrap;flex-shrink:0}
+.comp-date.urgent{background:#C0392B}
+.comp-date.medium{background:#B7950B}
+.comp-name{font-size:11px;color:var(--tx);line-height:1.4}
+.comp-tag{font-size:9px;color:var(--mu)}
+
+/* INVOICE */
+.inv-form{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+.inv-field{display:flex;flex-direction:column;gap:4px}
+.inv-field label{font-size:11px;font-weight:500;color:var(--mu)}
+.inv-field input,.inv-field select{padding:8px 11px;border:1.5px solid var(--bd);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;background:#fff}
+.inv-field input:focus,.inv-field select:focus{border-color:#2471A3}
+.inv-items{margin-bottom:14px}
+.inv-item-row{display:flex;gap:8px;margin-bottom:8px;align-items:center}
+.inv-item-row input{flex:1;padding:7px 10px;border:1.5px solid var(--bd);border-radius:7px;font-size:12px;font-family:'DM Sans',sans-serif;outline:none}
+.inv-item-row input:focus{border-color:#2471A3}
+.inv-item-row .amt-inp{width:100px}
+.inv-add-btn{padding:6px 12px;background:#E8F5E9;color:#1E8449;border:1px solid #1E8449;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+.inv-total{background:#F7F6F2;border-radius:9px;padding:13px 16px;display:flex;justify-content:space-between;align-items:center;margin-bottom:14px}
+.inv-generate-btn{width:100%;padding:12px;background:#1B4F72;color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* INVOICE PREVIEW */
+.inv-preview{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:24px;margin-top:14px;display:none}
+.inv-preview-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:20px;padding-bottom:16px;border-bottom:2px solid #1B4F72}
+.inv-firm-name{font-family:'DM Serif Display',serif;font-size:20px;color:#1B4F72}
+.inv-firm-sub{font-size:11px;color:var(--mu);margin-top:3px}
+.inv-no{text-align:right}
+.inv-no .num{font-size:18px;font-weight:600;color:#1B4F72}
+.inv-no .dt{font-size:11px;color:var(--mu);margin-top:2px}
+.inv-parties{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:18px}
+.inv-party-label{font-size:10px;font-weight:600;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;margin-bottom:4px}
+.inv-party-name{font-size:14px;font-weight:500;margin-bottom:2px}
+.inv-party-sub{font-size:12px;color:var(--mu)}
+.inv-table{width:100%;border-collapse:collapse;margin-bottom:16px}
+.inv-table th{text-align:left;padding:9px 12px;font-size:11px;font-weight:500;color:#fff;background:#1B4F72}
+.inv-table td{padding:9px 12px;border-bottom:1px solid var(--bd);font-size:13px}
+.inv-table tr:last-child td{border-bottom:none}
+.inv-table .amt-col{text-align:right}
+.inv-footer{border-top:1px solid var(--bd);padding-top:14px;display:flex;justify-content:space-between;align-items:center}
+.inv-total-box{background:#1B4F72;color:#fff;padding:12px 20px;border-radius:9px;text-align:right}
+.inv-total-box .lbl{font-size:11px;opacity:.8}
+.inv-total-box .val{font-size:20px;font-weight:500}
+.inv-print-btn{padding:10px 20px;background:#117A65;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* PAYROLL */
+.payroll-table{width:100%;border-collapse:collapse;font-size:13px}
+.payroll-table th{text-align:left;padding:10px 13px;font-size:11px;font-weight:500;color:var(--mu);letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--bd);background:#FAFAF8}
+.payroll-table td{padding:11px 13px;border-bottom:1px solid #F0EDE5;vertical-align:middle}
+.payroll-table tr:last-child td{border-bottom:none}
+.payroll-inp{width:90px;padding:5px 8px;border:1.5px solid var(--bd);border-radius:6px;font-size:12px;font-family:'DM Sans',sans-serif;outline:none;text-align:right}
+.payroll-inp:focus{border-color:#2471A3}
+.payroll-total-row{background:#F7F6F2;font-weight:500}
+
+/* ITR STATUS */
+.itr-table{width:100%;border-collapse:collapse;font-size:13px}
+.itr-table th{text-align:left;padding:10px 13px;font-size:11px;font-weight:500;color:var(--mu);letter-spacing:.05em;text-transform:uppercase;border-bottom:1px solid var(--bd);background:#FAFAF8}
+.itr-table td{padding:11px 13px;border-bottom:1px solid #F0EDE5;vertical-align:middle}
+.itr-table tr:last-child td{border-bottom:none}
+.itr-sel{padding:5px 8px;border:1.5px solid var(--bd);border-radius:6px;font-size:11px;font-family:'DM Sans',sans-serif;outline:none;background:#fff;cursor:pointer}
+.itr-sel:focus{border-color:#2471A3}
+
+/* REVENUE */
+.rev-bar-wrap{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.rev-bar-label{font-size:12px;font-weight:500;min-width:140px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.rev-bar-track{flex:1;background:#F0EDE5;border-radius:20px;height:8px;overflow:hidden}
+.rev-bar-fill{height:100%;border-radius:20px;background:#1B4F72;transition:width .5s}
+.rev-bar-val{font-size:12px;font-weight:500;color:var(--mu);min-width:70px;text-align:right}
+
+/* BULK MSG */
+.bulk-form{display:flex;flex-direction:column;gap:11px}
+.bulk-form textarea{width:100%;padding:10px 13px;border:1.5px solid var(--bd);border-radius:9px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;resize:vertical;min-height:100px}
+.bulk-form textarea:focus{border-color:#2471A3}
+.bulk-send-btn{padding:11px;background:#1B4F72;color:#fff;border:none;border-radius:9px;font-size:14px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+.bulk-log{margin-top:12px}
+.bulk-log-item{padding:9px 13px;background:#F0FFF4;border-radius:8px;border-left:3px solid #1E8449;margin-bottom:7px;font-size:12px}
+
+/* AI CHAT */
+.chat-wrap{display:flex;flex-direction:column;height:460px}
+.chat-messages{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:10px;background:#FAFAF8;border-radius:10px 10px 0 0;border:1px solid var(--bd);border-bottom:none}
+.chat-msg{max-width:80%;padding:10px 13px;border-radius:12px;font-size:13px;line-height:1.5}
+.chat-msg.user{background:#1B4F72;color:#fff;align-self:flex-end;border-radius:12px 12px 2px 12px}
+.chat-msg.ai{background:#fff;color:var(--tx);align-self:flex-start;border:1px solid var(--bd);border-radius:12px 12px 12px 2px}
+.chat-msg.ai .ai-label{font-size:10px;font-weight:600;color:#B7950B;margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em}
+.chat-msg.loading{background:#fff;border:1px solid var(--bd);align-self:flex-start;color:var(--mu)}
+.chat-inp-row{display:flex;gap:8px;border:1px solid var(--bd);border-radius:0 0 10px 10px;padding:10px;background:#fff}
+.chat-inp-row input{flex:1;padding:9px 13px;border:1.5px solid var(--bd);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none}
+.chat-inp-row input:focus{border-color:#2471A3}
+.chat-send-btn{padding:9px 18px;background:#1B4F72;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+.chat-quick{display:flex;gap:7px;flex-wrap:wrap;margin-bottom:11px}
+.chat-quick-btn{padding:6px 11px;background:#EBF5FB;color:#1B4F72;border:none;border-radius:20px;font-size:11px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif;transition:all .2s}
+.chat-quick-btn:hover{background:#1B4F72;color:#fff}
+
+/* CALENDAR */
+.cal-wrap{background:#fff;border-radius:var(--r);border:1px solid var(--bd);overflow:hidden}
+.cal-head{background:#1B4F72;color:#fff;padding:11px 15px;display:flex;align-items:center;justify-content:space-between}
+.cal-head h3{font-size:13px;font-weight:500}
+.cnav{background:none;border:none;color:#fff;cursor:pointer;font-size:15px;padding:2px 7px;border-radius:4px}
+.cnav:hover{background:rgba(255,255,255,.15)}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);text-align:center;padding:9px 7px 5px}
+.cal-dh{font-size:10px;font-weight:500;color:var(--mu);padding:3px 0}
+.cal-cell{font-size:12px;padding:5px 3px;cursor:pointer;border-radius:6px;transition:all .15s;position:relative;min-height:27px;display:flex;align-items:center;justify-content:center}
+.cal-cell:hover{background:#EBF5FB;color:#1B4F72}
+.cal-cell.today{font-weight:600;color:#1B4F72}
+.cal-cell.selected{background:#1B4F72;color:#fff;font-weight:500}
+.cal-cell.has-apt::after{content:'';position:absolute;bottom:2px;left:50%;transform:translateX(-50%);width:4px;height:4px;border-radius:50%;background:#F39C12}
+.cal-cell.selected.has-apt::after{background:#fff}
+.cal-cell.other-month{color:#ccc}
+.cal-cell.empty{cursor:default}.cal-cell.empty:hover{background:none}
+.slots-panel{background:#fff;border-radius:var(--r);border:1px solid var(--bd);padding:13px}
+.slot-dlbl{font-size:12px;font-weight:500;color:var(--ac);margin-bottom:9px;padding-bottom:7px;border-bottom:1px solid var(--bd)}
+.slot-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:5px;margin-bottom:9px}
+.slot{padding:6px 4px;border:1.5px solid var(--bd);border-radius:7px;text-align:center;font-size:11px;font-weight:500;cursor:pointer;transition:all .2s;color:var(--tx);background:#fff}
+.slot:hover{border-color:#2471A3;color:#2471A3;background:#EBF5FB}
+.slot.booked{background:#FAFAF8;color:#ccc;border-color:#eee;cursor:default}
+.slot.sel-slot{background:#1B4F72;color:#fff;border-color:#1B4F72}
+.book-form{border-top:1px solid var(--bd);padding-top:11px}
+.bfsel{width:100%;padding:7px 10px;border:1.5px solid var(--bd);border-radius:7px;font-size:12px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:7px;background:#fff;color:var(--tx)}
+.bfinp{width:100%;padding:7px 10px;border:1.5px solid var(--bd);border-radius:7px;font-size:12px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:7px}
+.bfinp:focus,.bfsel:focus{border-color:#2471A3}
+.book-btn{width:100%;padding:9px;background:#1B4F72;color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+.apt-list-wrap{background:#fff;border-radius:var(--r);border:1px solid var(--bd);overflow:hidden}
+.apt-item{display:flex;align-items:center;gap:10px;padding:11px 15px;border-bottom:1px solid #F5F2EC;transition:background .15s;flex-wrap:wrap}
+.apt-item:hover{background:#FAFAF8}.apt-item:last-child{border-bottom:none}
+.atb{text-align:center;background:#EBF5FB;border-radius:8px;padding:6px 8px;min-width:48px;flex-shrink:0}
+.atd{font-size:10px;font-weight:500;color:#1B4F72}.att{font-size:12px;font-weight:600;color:#1B4F72}
+.apt-info{flex:1;min-width:100px}
+.apt-cn{font-weight:500;font-size:13px}.apt-pu{font-size:11px;color:var(--mu);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.apt-ab{padding:4px 8px;border-radius:5px;border:1px solid var(--bd);background:#fff;font-size:10px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+.apt-ab.conf{background:#E8F5E9;color:#1E8449;border-color:#1E8449}
+.apt-ab.canc:hover{background:#FDEDEC;color:#C0392B;border-color:#C0392B}
+.empty-state{text-align:center;padding:24px;color:var(--mu);font-size:13px}
+
+/* REMINDERS */
+.rr{display:flex;align-items:center;justify-content:space-between;padding:10px 13px;background:#FAFAF8;border-radius:8px;border:1px solid var(--bd);margin-bottom:7px;flex-wrap:wrap;gap:7px}
+.rac{display:flex;gap:5px}
+.rb{padding:5px 9px;border-radius:6px;border:1px solid var(--bd);background:#fff;font-size:11px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+.rb.sent{background:#E8F5E9;color:#1E8449;border-color:#1E8449;cursor:default}
+
+/* NEWS */
+.news-card{background:#fff;border-radius:var(--r);border:1px solid var(--bd);overflow:hidden}
+.news-hdr{background:#0B2545;color:#fff;padding:13px 17px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px}
+.news-hdr h3{font-size:14px;font-weight:500}
+.live-dot{display:flex;align-items:center;gap:5px;font-size:11px;opacity:.8}
+.live-dot span{width:7px;height:7px;background:#4CAF50;border-radius:50%;animation:blink 1.5s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.3}}
+.news-body{padding:15px}
+.ni{padding:11px 0;border-bottom:1px solid var(--bd)}.ni:last-child{border-bottom:none}
+.ntag{font-size:10px;font-weight:600;letter-spacing:.07em;text-transform:uppercase;margin-bottom:4px}
+.nh{font-size:13px;font-weight:500;line-height:1.5;margin-bottom:3px}.nm{font-size:11px;color:var(--mu)}
+.news-loading{text-align:center;padding:28px;color:var(--mu);font-size:13px}
+.npulse{display:inline-block;width:8px;height:8px;background:#2471A3;border-radius:50%;margin-right:6px;animation:blink 1s infinite}
+.rfbtn{background:rgba(255,255,255,.15);border:none;color:#fff;padding:4px 11px;border-radius:6px;font-size:11px;cursor:pointer;font-family:'DM Sans',sans-serif}
+.rfbtn:disabled{opacity:.4;cursor:default}
+
+/* CLIENT PORTAL */
+.phdr{background:#117A65;border-radius:var(--r);padding:17px 19px;color:#fff;margin-bottom:13px}
+.phdr h2{font-family:'DM Serif Display',serif;font-size:19px;font-weight:400}
+.phdr p{font-size:12px;opacity:.8;margin-top:3px}
+.prr{display:flex;align-items:center;justify-content:space-between;padding:11px 13px;background:#FAFAF8;border-radius:8px;border:1px solid var(--bd);margin-bottom:7px}
+.pit{background:#FAFAF8;border-radius:8px;padding:9px 11px;border:1px solid var(--bd)}
+.pitl{font-size:10px;color:var(--mu);margin-bottom:3px;text-transform:uppercase;letter-spacing:.05em;font-weight:500}
+.pitv{font-size:13px;font-weight:500}
+
+/* EMP */
+.mystat{background:#1B4F72;border-radius:var(--r);padding:17px 19px;color:#fff;margin-bottom:13px}
+.mystat h2{font-family:'DM Serif Display',serif;font-size:19px;font-weight:400}
+.mystat p{font-size:12px;opacity:.75;margin-top:3px}
+.emp-task-item{display:flex;align-items:center;gap:9px;padding:11px 13px;border-radius:9px;border:1px solid var(--bd);margin-bottom:7px;background:#fff}
+.emp-task-item.from-admin{border-left:3px solid #1B4F72}
+.emp-task-item.from-self{border-left:3px solid #117A65}
+.etcb{width:17px;height:17px;border-radius:4px;border:1.5px solid #ccc;flex-shrink:0;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;font-size:9px}
+.etcb.done{background:#1E8449;border-color:#1E8449;color:#fff}
+.from-tag{font-size:10px;font-weight:600;padding:1px 6px;border-radius:10px;margin-left:6px}
+.from-admin-tag{background:#EBF5FB;color:#1B4F72}.from-self-tag{background:#E8F5E9;color:#1E8449}
+.tar2{display:flex;gap:7px;margin-top:9px}
+.tar2 input{flex:1;padding:8px 12px;border:1.5px solid var(--bd);border-radius:7px;font-size:12px;font-family:'DM Sans',sans-serif;outline:none}
+.tar2 input:focus{border-color:#2471A3}
+.tar2 button{padding:8px 12px;background:#117A65;color:#fff;border:none;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+
+/* PAYMENT MODAL */
+.mwrap{display:none;background:rgba(0,0,0,.45);border-radius:var(--r);margin-top:10px;align-items:flex-start;justify-content:center;padding:38px 10px;min-height:420px}
+.mwrap.open{display:flex}
+.modal{background:#fff;border-radius:16px;width:355px;max-width:98%;overflow:hidden}
+.mhd{background:#1B4F72;color:#fff;padding:15px 19px;display:flex;align-items:center;justify-content:space-between}
+.mhd h3{font-size:13px;font-weight:500}.mclose{background:none;border:none;color:#fff;font-size:18px;cursor:pointer}
+.mbody{padding:17px}
+.pamt{text-align:center;padding:11px 0;border-bottom:1px solid var(--bd);margin-bottom:13px}
+.pamt .pl{font-size:10px;color:var(--mu);text-transform:uppercase;letter-spacing:.06em;margin-bottom:4px}
+.pamt .pv{font-size:28px;font-weight:300;color:#C0392B}
+.uopts{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:11px}
+.ubtn{padding:9px;border:1.5px solid var(--bd);border-radius:8px;text-align:center;cursor:pointer;font-size:12px;font-weight:500;background:#fff;transition:all .2s;font-family:'DM Sans',sans-serif}
+.ubtn.sel{border-color:#1B4F72;background:#EBF5FB;color:#1B4F72}
+.uinp{width:100%;padding:9px 12px;border:1.5px solid var(--bd);border-radius:8px;font-size:13px;font-family:'DM Sans',sans-serif;outline:none;margin-bottom:10px}
+.uinp:focus{border-color:#2471A3}
+.paybtn{width:100%;padding:11px;background:#1B4F72;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif}
+.psuc{display:none;text-align:center;padding:21px}
+.pchk{width:48px;height:48px;background:#E8F5E9;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 9px;font-size:19px;color:#1E8449}
+
+#toast{position:fixed;bottom:18px;left:50%;transform:translateX(-50%);background:#1B4F72;color:#fff;padding:8px 17px;border-radius:8px;font-size:12px;font-weight:500;z-index:9999;opacity:0;transition:opacity .3s;font-family:'DM Sans',sans-serif;pointer-events:none;white-space:nowrap}
+
+@media print{.tnav,.stabs,.nlo,.inv-print-btn{display:none!important}.inv-preview{display:block!important;border:none}.main{padding:0}}
+</style>
+</head>
+<body>
+<div id="toast"></div>
+
+<!-- LOGIN -->
+<div id="ls" class="screen active">
+  <div class="lb">
+    <div class="fl">
+      <div class="lm">SSV</div>
+      <h1>Saxena Singhal & Vaid</h1>
+      <p>Chartered Accountants · Est. 1998</p>
+    </div>
+    <div class="rtabs">
+      <button class="rt active" onclick="setRole('admin')" id="tab-admin">Admin</button>
+      <button class="rt" onclick="setRole('employee')" id="tab-employee">Employee</button>
+      <button class="rt" onclick="setRole('client')" id="tab-client">Client</button>
+    </div>
+    <div class="ig"><label>Username / PAN ID</label><input type="text" id="lu" placeholder="admin / priya.sharma / AABCP1234M"></div>
+    <div class="ig"><label>Password</label><input type="password" id="lp" placeholder="••••••••"></div>
+    <button class="lbtn" onclick="doLogin()">Sign In →</button>
+    <div class="hint">Admin: any &nbsp;·&nbsp; Employee: priya.sharma &nbsp;·&nbsp; Client: AABCP1234M</div>
+  </div>
+</div>
+
+<!-- ADMIN -->
+<div id="as" class="screen">
+  <div class="tnav">
+    <div class="brand">Saxena Singhal & Vaid <span class="btag">Admin</span></div>
+    <div class="navr"><div class="avt">AD</div><span>Admin</span><button class="nlo" onclick="logout()">Sign out</button></div>
+  </div>
+  <div class="main">
+    <div class="stabs">
+      <button class="stab active" onclick="showSec('emp','a')" id="asb-emp">Employees</button>
+      <button class="stab" onclick="showSec('tasks','a')" id="asb-tasks">Tasks <span class="tbdg" id="task-badge" style="display:none">0</span></button>
+      <button class="stab" onclick="showSec('cli','a')" id="asb-cli">Clients</button>
+      <button class="stab" onclick="showSec('apt','a')" id="asb-apt">Appointments</button>
+      <button class="stab" onclick="showSec('inv','a')" id="asb-inv">Invoice</button>
+      <button class="stab" onclick="showSec('pay','a')" id="asb-pay">Payroll</button>
+      <button class="stab" onclick="showSec('rev','a')" id="asb-rev">Revenue</button>
+      <button class="stab" onclick="showSec('comp','a')" id="asb-comp">Compliance Cal</button>
+      <button class="stab" onclick="showSec('bulk','a')" id="asb-bulk">Bulk Message</button>
+      <button class="stab" onclick="showSec('rem','a')" id="asb-rem">Reminders</button>
+      <button class="stab" onclick="showSec('nws','a')" id="asb-nws">Tax News</button>
+    </div>
+
+    <!-- EMPLOYEES -->
+    <div id="asec-emp">
+      <div class="g g4" style="margin-bottom:12px">
+        <div class="card"><div class="ct">Total Staff</div><div class="sn">6</div><div class="sl">Active</div></div>
+        <div class="card"><div class="ct">Avg Attendance</div><div class="sn">86%</div><div class="sl">This month</div></div>
+        <div class="card"><div class="ct">Projects</div><div class="sn">6</div><div class="sl">Active</div></div>
+        <div class="card"><div class="ct">Output Today</div><div class="sn">24</div><div class="sl">Tasks done</div></div>
+      </div>
+      <div class="g g2" style="margin-bottom:12px">
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="padding:11px 15px 9px;border-bottom:1px solid var(--bd)"><div class="sh" style="margin-bottom:0"><h3>Employee Overview</h3><span id="tddate">May 2025</span></div></div>
+          <table class="etb"><thead><tr><th style="width:28%">Name</th><th style="width:14%">Attend.</th><th style="width:36%">Project</th><th style="width:22%">Status</th></tr></thead><tbody id="etbody"></tbody></table>
+        </div>
+        <div class="card"><div class="sh"><h3>Today's Output</h3></div><div id="outlog"></div></div>
+      </div>
+      <div class="card"><div class="sh"><h3>Project Tracker</h3><span>All active</span></div><div class="g g3" id="prgrid"></div></div>
+    </div>
+
+    <!-- TASKS -->
+    <div id="asec-tasks" style="display:none">
+      <div class="ta-section">
+        <div class="ta-head"><h3>Assign Task to Employee</h3><p>Create and track tasks across your team</p></div>
+        <div class="ta-form">
+          <div class="ta-row">
+            <div class="ta-f grow"><label>Task</label><input type="text" id="ta-title" placeholder="e.g. File GSTR-3B for Sharma Pvt Ltd..."></div>
+            <div class="ta-f"><label>Assign To</label><select id="ta-emp"><option value="">Select</option></select></div>
+            <div class="ta-f"><label>Priority</label><select id="ta-priority"><option value="High">🔴 High</option><option value="Medium" selected>🟡 Medium</option><option value="Low">🟢 Low</option></select></div>
+            <div class="ta-f"><label>Due Date</label><input type="date" id="ta-due" style="width:120px"></div>
+            <div class="ta-f"><label>&nbsp;</label><button class="abtn" onclick="assignTask()">+ Assign</button></div>
+          </div>
+        </div>
+        <div class="ft-tabs">
+          <button class="ft active" onclick="filterTasks('all',this)">All</button>
+          <button class="ft" onclick="filterTasks('pending',this)">Pending</button>
+          <button class="ft" onclick="filterTasks('done',this)">Completed</button>
+          <span style="margin-left:auto;font-size:11px;color:var(--mu);align-self:center" id="task-stats-lbl"></span>
+        </div>
+        <div class="task-rows" id="admin-task-list"></div>
+      </div>
+    </div>
+
+    <!-- CLIENTS -->
+    <div id="asec-cli" style="display:none">
+      <div class="g g2">
+        <div class="card" style="padding:0;overflow:hidden">
+          <div style="padding:11px 15px 9px;border-bottom:1px solid var(--bd)"><div class="sh" style="margin-bottom:0"><h3>Client Directory</h3><span>5 clients</span></div></div>
+          <div id="clilist"></div>
+        </div>
+        <div class="card"><div class="sh"><h3>Outstanding Dues</h3><span style="color:#C0392B;font-weight:500">₹3,42,000</span></div><div id="paylist"></div></div>
+      </div>
+    </div>
+
+    <!-- APPOINTMENTS -->
+    <div id="asec-apt" style="display:none">
+      <div class="g g4" style="margin-bottom:12px">
+        <div class="card"><div class="ct">Today</div><div class="sn" id="apt-today-count">0</div><div class="sl">Appointments</div></div>
+        <div class="card"><div class="ct">This Week</div><div class="sn" id="apt-week-count">0</div><div class="sl">Scheduled</div></div>
+        <div class="card"><div class="ct">Pending</div><div class="sn" id="apt-pend-count">0</div><div class="sl">Need confirm</div></div>
+        <div class="card"><div class="ct">Completed</div><div class="sn" id="apt-done-count">0</div><div class="sl">This month</div></div>
+      </div>
+      <div class="g g2" style="margin-bottom:12px">
+        <div class="cal-wrap">
+          <div class="cal-head"><button class="cnav" onclick="changeMonth(-1)">&#8249;</button><h3 id="cal-lbl">May 2025</h3><button class="cnav" onclick="changeMonth(1)">&#8250;</button></div>
+          <div class="cal-days" id="cal-grid"></div>
+        </div>
+        <div class="slots-panel">
+          <div class="slot-dlbl" id="slot-dlbl">Select a date to view / book</div>
+          <div class="slot-grid" id="slot-grid"></div>
+          <div class="book-form" id="book-form" style="display:none">
+            <div style="font-size:11px;font-weight:500;color:var(--ac);margin-bottom:7px" id="sel-slot-lbl">Selected</div>
+            <select class="bfsel" id="bf-client"><option value="">Select Client</option></select>
+            <select class="bfsel" id="bf-purpose"><option>GST Consultation</option><option>ITR Filing Review</option><option>Audit Discussion</option><option>Tax Planning</option><option>ROC Compliance</option><option>TDS Review</option><option>General Consultation</option></select>
+            <input class="bfinp" type="text" id="bf-notes" placeholder="Notes (optional)">
+            <button class="book-btn" onclick="bookApt()">Book Appointment</button>
+          </div>
+        </div>
+      </div>
+      <div class="apt-list-wrap">
+        <div style="padding:11px 15px;border-bottom:1px solid var(--bd);display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:7px">
+          <h3 style="font-size:14px;font-weight:500">All Appointments</h3>
+          <div style="display:flex;gap:5px;flex-wrap:wrap">
+            <button class="stab active" style="font-size:11px;padding:4px 10px" onclick="filterApts('all',this)">All</button>
+            <button class="stab" style="font-size:11px;padding:4px 10px" onclick="filterApts('pending',this)">Pending</button>
+            <button class="stab" style="font-size:11px;padding:4px 10px" onclick="filterApts('confirmed',this)">Confirmed</button>
+            <button class="stab" style="font-size:11px;padding:4px 10px" onclick="filterApts('completed',this)">Done</button>
+          </div>
+        </div>
+        <div id="apt-list-body"></div>
+      </div>
+    </div>
+
+    <!-- INVOICE GENERATOR -->
+    <div id="asec-inv" style="display:none">
+      <div class="card" style="margin-bottom:12px">
+        <div class="sh"><h3>Invoice Generator</h3><span>Create professional GST invoices</span></div>
+        <div class="inv-form">
+          <div class="inv-field"><label>Client Name</label><select id="inv-client"><option value="">Select Client</option></select></div>
+          <div class="inv-field"><label>Invoice Number</label><input type="text" id="inv-no" value="SSV/2025/001"></div>
+          <div class="inv-field"><label>Invoice Date</label><input type="date" id="inv-date"></div>
+          <div class="inv-field"><label>Due Date</label><input type="date" id="inv-due-date"></div>
+          <div class="inv-field"><label>GST Rate (%)</label><select id="inv-gst"><option value="0">0% (Exempt)</option><option value="5">5%</option><option value="12">12%</option><option value="18" selected>18%</option><option value="28">28%</option></select></div>
+          <div class="inv-field"><label>Payment Terms</label><select id="inv-terms"><option>Due on Receipt</option><option>Net 15 Days</option><option>Net 30 Days</option><option>Net 45 Days</option></select></div>
+        </div>
+        <div class="inv-items">
+          <div class="sh"><h3>Service Items</h3><button class="inv-add-btn" onclick="addInvItem()">+ Add Item</button></div>
+          <div id="inv-items-list">
+            <div class="inv-item-row">
+              <input type="text" placeholder="Service description" value="GST Filing Q4 FY25 (GSTR-1 + GSTR-3B)">
+              <input type="number" class="amt-inp" placeholder="Amount" value="18000">
+              <button onclick="removeInvItem(this)" style="padding:5px 9px;border:1px solid #FDEDEC;background:#FDEDEC;color:#C0392B;border-radius:6px;cursor:pointer;font-size:12px">✕</button>
+            </div>
+          </div>
+        </div>
+        <div class="inv-total" id="inv-total-display">
+          <div>
+            <div style="font-size:13px;color:var(--mu)">Subtotal: <span id="inv-subtotal">₹18,000</span></div>
+            <div style="font-size:13px;color:var(--mu)">GST (18%): <span id="inv-gst-amt">₹3,240</span></div>
+            <div style="font-size:15px;font-weight:500;margin-top:4px">Total: <span id="inv-total-amt" style="color:#1B4F72">₹21,240</span></div>
+          </div>
+          <button class="inv-generate-btn" style="width:auto;padding:10px 20px" onclick="generateInvoice()">Generate Invoice →</button>
+        </div>
+      </div>
+      <div class="inv-preview" id="inv-preview">
+        <div class="inv-preview-head">
+          <div><div class="inv-firm-name">Saxena Singhal & Vaid</div><div class="inv-firm-sub">Chartered Accountants · GSTIN: 07AABCS1234A1Z1<br>123 CA House, Connaught Place, New Delhi – 110001<br>Tel: +91 11 4567 8900 · ssv@camail.com</div></div>
+          <div class="inv-no"><div style="font-size:11px;color:var(--mu);margin-bottom:4px">TAX INVOICE</div><div class="num" id="prev-inv-no">SSV/2025/001</div><div class="dt" id="prev-inv-date">3 May 2025</div></div>
+        </div>
+        <div class="inv-parties">
+          <div><div class="inv-party-label">Bill To</div><div class="inv-party-name" id="prev-client-name">Rajesh Chopra</div><div class="inv-party-sub" id="prev-client-pan">PAN: AABCP1234M</div><div class="inv-party-sub" id="prev-client-gst">GST: 07AABCP1234M1Z5</div></div>
+          <div style="text-align:right"><div class="inv-party-label">Payment Info</div><div class="inv-party-name" id="prev-terms">Due on Receipt</div><div class="inv-party-sub" id="prev-due">Due: 3 May 2025</div></div>
+        </div>
+        <table class="inv-table">
+          <thead><tr><th style="width:50%">Description</th><th>Qty</th><th class="amt-col">Rate</th><th class="amt-col">GST</th><th class="amt-col">Amount</th></tr></thead>
+          <tbody id="prev-items"></tbody>
+        </table>
+        <div class="inv-footer">
+          <div><div style="font-size:12px;color:var(--mu);margin-bottom:6px">Bank Details for Payment</div><div style="font-size:12px">HDFC Bank · A/C: 50200012345678<br>IFSC: HDFC0001234 · Branch: CP, New Delhi</div></div>
+          <div class="inv-total-box"><div class="lbl">Total Amount Due</div><div class="val" id="prev-total">₹21,240</div></div>
+        </div>
+        <div style="margin-top:14px;text-align:center;font-size:11px;color:var(--mu);border-top:1px solid var(--bd);padding-top:12px">Thank you for your trust in Saxena Singhal & Vaid · This is a computer generated invoice</div>
+        <div style="text-align:right;margin-top:12px"><button class="inv-print-btn" onclick="window.print()">🖨 Print / Save PDF</button></div>
+      </div>
+    </div>
+
+    <!-- PAYROLL -->
+    <div id="asec-pay" style="display:none">
+      <div class="card">
+        <div class="sh"><h3>Staff Payroll — May 2025</h3><span style="color:#1E8449;font-weight:500">Total: <span id="total-payroll">₹0</span></span></div>
+        <div style="overflow-x:auto">
+          <table class="payroll-table">
+            <thead><tr><th>Employee</th><th>Designation</th><th>Basic Salary (₹)</th><th>Allowances (₹)</th><th>Gross (₹)</th><th>TDS Deducted (₹)</th><th>Net Pay (₹)</th><th>Status</th></tr></thead>
+            <tbody id="payroll-body"></tbody>
+            <tfoot><tr class="payroll-total-row"><td colspan="2" style="padding:10px 13px">Total</td><td id="pt-basic" style="padding:10px 13px"></td><td id="pt-allow" style="padding:10px 13px"></td><td id="pt-gross" style="padding:10px 13px"></td><td id="pt-tds" style="padding:10px 13px"></td><td id="pt-net" style="padding:10px 13px"></td><td></td></tr></tfoot>
+          </table>
+        </div>
+        <div style="margin-top:12px;text-align:right"><button onclick="markAllPaid()" style="padding:9px 20px;background:#1E8449;color:#fff;border:none;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif">Mark All Paid ✓</button></div>
+      </div>
+    </div>
+
+    <!-- REVENUE TRACKER -->
+    <div id="asec-rev" style="display:none">
+      <div class="g g4" style="margin-bottom:12px">
+        <div class="card"><div class="ct">Total Revenue</div><div class="sn">₹3.42L</div><div class="sl">Outstanding</div></div>
+        <div class="card"><div class="ct">Collected</div><div class="sn">₹8.7L</div><div class="sl">FY 2024-25</div></div>
+        <div class="card"><div class="ct">Top Client</div><div class="sn" style="font-size:16px">Tech Bharat</div><div class="sl">₹98,500 pending</div></div>
+        <div class="card"><div class="ct">Avg per Client</div><div class="sn">₹68K</div><div class="sl">This year</div></div>
+      </div>
+      <div class="card">
+        <div class="sh"><h3>Client-wise Revenue Tracker</h3><span>Outstanding dues</span></div>
+        <div id="rev-bars"></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="sh"><h3>Service-wise Breakdown</h3><span>FY 2024-25</span></div>
+        <div id="service-bars"></div>
+      </div>
+    </div>
+
+    <!-- COMPLIANCE CALENDAR -->
+    <div id="asec-comp" style="display:none">
+      <div class="comp-cal">
+        <div class="comp-cal-head"><h3>Indian Tax Compliance Calendar 2025-26</h3><span style="font-size:11px;opacity:.75">All important due dates in one place</span></div>
+        <div class="comp-grid" id="comp-grid"></div>
+      </div>
+    </div>
+
+    <!-- BULK MESSAGE -->
+    <div id="asec-bulk" style="display:none">
+      <div class="card" style="margin-bottom:12px">
+        <div class="sh"><h3>Bulk Message to All Clients</h3><span>Portal notifications</span></div>
+        <div class="bulk-form">
+          <div>
+            <div style="font-size:11px;font-weight:500;color:var(--mu);margin-bottom:6px">Select Recipients</div>
+            <div style="display:flex;gap:8px;flex-wrap:wrap">
+              <label style="display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer"><input type="checkbox" id="bulk-all" onchange="toggleAllClients(this)" checked> All Clients (5)</label>
+              <label style="display:flex;align-items:center;gap:5px;font-size:13px;cursor:pointer"><input type="checkbox" id="bulk-due"> With Outstanding Dues Only (4)</label>
+            </div>
+          </div>
+          <div>
+            <div style="font-size:11px;font-weight:500;color:var(--mu);margin-bottom:6px">Quick Templates</div>
+            <div style="display:flex;gap:7px;flex-wrap:wrap">
+              <button class="chat-quick-btn" onclick="setBulkTemplate('gst')">GST Deadline</button>
+              <button class="chat-quick-btn" onclick="setBulkTemplate('itr')">ITR Reminder</button>
+              <button class="chat-quick-btn" onclick="setBulkTemplate('payment')">Payment Due</button>
+              <button class="chat-quick-btn" onclick="setBulkTemplate('tds')">TDS Notice</button>
+            </div>
+          </div>
+          <div><div style="font-size:11px;font-weight:500;color:var(--mu);margin-bottom:6px">Message</div><textarea id="bulk-msg" placeholder="Type your message to clients..."></textarea></div>
+          <button class="bulk-send-btn" onclick="sendBulkMsg()">Send to All Selected Clients →</button>
+        </div>
+        <div class="bulk-log" id="bulk-log"></div>
+      </div>
+    </div>
+
+    <!-- REMINDERS -->
+    <div id="asec-rem" style="display:none">
+      <div class="card" style="margin-bottom:12px"><div class="sh"><h3>Payment Reminders</h3><span>SMS / Email</span></div><div id="remlist"></div></div>
+      <div class="card"><div class="sh"><h3>Reminder Log</h3></div><div id="remlog" style="font-size:12px;min-height:40px"></div></div>
+    </div>
+
+    <!-- TAX NEWS -->
+    <div id="asec-nws" style="display:none">
+      <div class="news-card">
+        <div class="news-hdr">
+          <div><h3>Live Tax & GST News — India</h3><div style="font-size:11px;opacity:.7;margin-top:1px" id="nwsts">Economic Times · Live Mint · Free</div></div>
+          <div style="display:flex;align-items:center;gap:8px"><div class="live-dot"><span></span>Live</div><button class="rfbtn" id="nws-rfbtn" onclick="fetchNews()">↻ Refresh</button></div>
+        </div>
+        <div class="news-body" id="adminnews"><div class="news-loading"><span class="npulse"></span>Fetching latest updates...</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EMPLOYEE -->
+<div id="es" class="screen">
+  <div class="tnav">
+    <div class="brand">Saxena Singhal & Vaid <span class="btag">Employee</span></div>
+    <div class="navr"><div class="avt" id="eavt">PS</div><span id="ename">Priya</span><button class="nlo" onclick="logout()">Sign out</button></div>
+  </div>
+  <div class="main">
+    <div class="stabs">
+      <button class="stab active" onclick="showSec('my','e')" id="esb-my">My Dashboard</button>
+      <button class="stab" onclick="showSec('inbox','e')" id="esb-inbox">Task Inbox <span class="tbdg" id="emp-task-badge" style="display:none">0</span></button>
+      <button class="stab" onclick="showSec('enw','e')" id="esb-enw">Tax News</button>
+    </div>
+    <div id="esec-my">
+      <div class="mystat"><h2 id="ewelcome">Good day, Priya</h2><p id="esub">Senior CA · Saxena Singhal & Vaid</p></div>
+      <div class="g g4" style="margin-bottom:12px">
+        <div class="card"><div class="ct">Attendance</div><div class="sn" id="eatt">96%</div><div class="sl">This month</div></div>
+        <div class="card"><div class="ct">Days Present</div><div class="sn" id="edays">22/23</div><div class="sl">Working days</div></div>
+        <div class="card"><div class="ct">Project</div><div class="sn" id="eprog">82%</div><div class="sl" id="eprojn">GST Audit</div></div>
+        <div class="card"><div class="ct">Tasks Done</div><div class="sn" id="etcnt">0</div><div class="sl">Today</div></div>
+      </div>
+      <div class="g g2">
+        <div class="card"><div class="sh"><h3>My Tasks (Self)</h3><span>Personal checklist</span></div><div id="selfTaskList"></div><div class="tar2"><input type="text" id="ntask" placeholder="Add your own task..."><button onclick="addSelfTask()">+ Add</button></div></div>
+        <div class="card"><div class="sh"><h3>My Project</h3><span id="pduelbl">Due: May 20</span></div><div id="eprojdet"></div></div>
+      </div>
+    </div>
+    <div id="esec-inbox" style="display:none">
+      <div class="card"><div class="sh"><h3>Tasks Assigned by Admin</h3><span id="inbox-count-lbl">0 pending</span></div><div id="emp-inbox-list"><div class="empty-state">No tasks assigned yet</div></div></div>
+    </div>
+    <div id="esec-enw" style="display:none">
+      <div class="news-card">
+        <div class="news-hdr"><div><h3>Tax & Regulatory News</h3><div style="font-size:11px;opacity:.7;margin-top:1px" id="enwts">Economic Times · Live Mint</div></div><div style="display:flex;align-items:center;gap:8px"><div class="live-dot"><span></span>Live</div><button class="rfbtn" id="enw-rfbtn" onclick="fetchNews()">↻ Refresh</button></div></div>
+        <div class="news-body" id="empnews"><div class="news-loading"><span class="npulse"></span>Fetching updates...</div></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CLIENT -->
+<div id="cs" class="screen">
+  <div class="tnav">
+    <div class="brand">Saxena Singhal & Vaid <span class="btag">Client</span></div>
+    <div class="navr"><div class="avt" style="background:#117A65">RC</div><span>Rajesh Chopra</span><button class="nlo" onclick="logout()">Sign out</button></div>
+  </div>
+  <div class="main">
+    <div class="stabs">
+      <button class="stab active" onclick="showSec('port','c')" id="csb-port">My Portal</button>
+      <button class="stab" onclick="showSec('capt','c')" id="csb-capt">Book Appointment</button>
+      <button class="stab" onclick="showSec('itr','c')" id="csb-itr">ITR Status</button>
+      <button class="stab" onclick="showSec('taxai','c')" id="csb-taxai">Tax Assistant 🤖</button>
+      <button class="stab" onclick="showSec('cnw','c')" id="csb-cnw">Tax News</button>
+    </div>
+
+    <div id="csec-port">
+      <div class="phdr"><h2>Welcome, Rajesh Chopra</h2><p>PAN: AABCP1234M &nbsp;|&nbsp; GST: 07AABCP1234M1Z5 &nbsp;|&nbsp; RM: CA Priya Sharma &nbsp;|&nbsp; Saxena Singhal & Vaid</p></div>
+      <div class="g g2" style="margin-bottom:12px">
+        <div class="card"><div class="ct">My Profile</div><div class="g" style="grid-template-columns:1fr 1fr;gap:8px"><div class="pit"><div class="pitl">PAN</div><div class="pitv">AABCP1234M</div></div><div class="pit"><div class="pitl">GST No.</div><div class="pitv">07AABCP1234M1Z5</div></div><div class="pit"><div class="pitl">Phone</div><div class="pitv">+91 98765 43210</div></div><div class="pit"><div class="pitl">Entity</div><div class="pitv">Proprietorship</div></div><div class="pit"><div class="pitl">AY Filing</div><div class="pitv">2024-25 Filed ✓</div></div><div class="pit"><div class="pitl">Client Since</div><div class="pitv">April 2019</div></div></div></div>
+        <div class="card"><div class="sh"><h3>Outstanding Dues</h3><span style="color:#C0392B;font-weight:600">₹48,500</span></div><div class="prr"><div><div style="font-size:13px;font-weight:500">GST Filing Q4 FY25</div><div style="font-size:11px;color:var(--mu)">GSTR-1 + GSTR-3B</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;color:#C0392B">₹18,000</div><div style="font-size:10px;color:var(--mu)">Due 15 May</div></div></div><div class="prr"><div><div style="font-size:13px;font-weight:500">IT Consultation</div><div style="font-size:11px;color:var(--mu)">AY 2025-26 planning</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;color:#C0392B">₹12,500</div><div style="font-size:10px;color:var(--mu)">Due 20 May</div></div></div><div class="prr"><div><div style="font-size:13px;font-weight:500">ROC Compliance</div><div style="font-size:11px;color:var(--mu)">Annual filing</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;color:#C0392B">₹18,000</div><div style="font-size:10px;color:var(--mu)">Due 30 May</div></div></div><div style="margin-top:10px;text-align:right"><button onclick="openPay()" style="background:#1B4F72;color:#fff;border:none;padding:9px 19px;border-radius:8px;font-size:13px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif">Pay via UPI →</button></div></div>
+      </div>
+    </div>
+
+    <div id="csec-capt" style="display:none">
+      <div class="g g2">
+        <div class="cal-wrap"><div class="cal-head"><button class="cnav" onclick="changeMonth2(-1)">&#8249;</button><h3 id="cal2-lbl">May 2025</h3><button class="cnav" onclick="changeMonth2(1)">&#8250;</button></div><div class="cal-days" id="cal2-grid"></div></div>
+        <div class="slots-panel"><div class="slot-dlbl" id="slot2-dlbl">Select a date to book</div><div class="slot-grid" id="slot2-grid"></div><div class="book-form" id="book-form2" style="display:none"><div style="font-size:11px;font-weight:500;color:var(--ac);margin-bottom:7px" id="sel-slot2-lbl">Selected</div><select class="bfsel" id="bf2-purpose"><option>GST Consultation</option><option>ITR Filing Review</option><option>Audit Discussion</option><option>Tax Planning</option><option>General Consultation</option></select><input class="bfinp" type="text" id="bf2-notes" placeholder="Notes / queries (optional)"><button class="book-btn" onclick="bookClientApt()">Request Appointment</button></div></div>
+      </div>
+      <div class="apt-list-wrap" style="margin-top:12px"><div style="padding:11px 15px;border-bottom:1px solid var(--bd)"><h3 style="font-size:14px;font-weight:500">My Appointments</h3></div><div id="my-apts"></div></div>
+    </div>
+
+    <!-- ITR STATUS -->
+    <div id="csec-itr" style="display:none">
+      <div class="card">
+        <div class="sh"><h3>ITR Filing Status Tracker</h3><span>Updated by your CA</span></div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px;margin-bottom:14px">
+          <div class="pit"><div class="pitl">Assessment Year</div><div class="pitv">2024-25</div></div>
+          <div class="pit"><div class="pitl">ITR Form</div><div class="pitv">ITR-4 (Sugam)</div></div>
+          <div class="pit"><div class="pitl">Gross Total Income</div><div class="pitv">₹18,40,000</div></div>
+          <div class="pit"><div class="pitl">Tax Paid</div><div class="pitv">₹2,18,400</div></div>
+          <div class="pit"><div class="pitl">Refund Status</div><div class="pitv" style="color:#1E8449">₹12,300 Initiated</div></div>
+          <div class="pit"><div class="pitl">Acknowledgement</div><div class="pitv">578934120052025</div></div>
+        </div>
+        <div class="sh"><h3>Filing Timeline</h3></div>
+        <div id="itr-timeline"></div>
+      </div>
+      <div class="card" style="margin-top:12px">
+        <div class="sh"><h3>Past Years</h3><span></span></div>
+        <table class="itr-table">
+          <thead><tr><th>AY</th><th>Form</th><th>Filed On</th><th>Income</th><th>Tax</th><th>Status</th></tr></thead>
+          <tbody id="itr-history"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- AI TAX ASSISTANT -->
+    <div id="csec-taxai" style="display:none">
+      <div class="card">
+        <div class="sh"><h3>AI Assistant 🤖</h3><span style="color:#B7950B;font-weight:500">Powered by Claude AI</span></div>
+        <div style="display:flex;background:#F2F0EA;border-radius:9px;padding:3px;gap:3px;margin-bottom:14px;width:fit-content">
+          <button id="mode-tax" onclick="setMode('tax')" style="padding:7px 16px;border-radius:7px;border:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;background:#1B4F72;color:#fff;transition:all .2s">💼 Tax Mode</button>
+          <button id="mode-chat" onclick="setMode('chat')" style="padding:7px 16px;border-radius:7px;border:none;font-family:'DM Sans',sans-serif;font-size:12px;font-weight:500;cursor:pointer;background:transparent;color:#888;transition:all .2s">💬 Chat Mode</button>
+        </div>
+        <p id="mode-desc" style="font-size:13px;color:var(--mu);margin-bottom:12px">Ask me anything about Indian taxes, GST, TDS, or your filing!</p>
+        <div class="chat-quick" id="quick-tax">
+          <button class="chat-quick-btn" onclick="askAI('What is the due date for GST filing this month?')">GST due date?</button>
+          <button class="chat-quick-btn" onclick="askAI('How much TDS on salary of 18 lakhs?')">TDS on salary?</button>
+          <button class="chat-quick-btn" onclick="askAI('Documents needed for ITR filing?')">ITR documents?</button>
+          <button class="chat-quick-btn" onclick="askAI('Old vs new tax regime which is better?')">Old vs New?</button>
+          <button class="chat-quick-btn" onclick="askAI('How to save tax legally in India?')">Tax saving?</button>
+          <button class="chat-quick-btn" onclick="askAI('Capital gains tax rules for mutual funds?')">Capital gains?</button>
+        </div>
+        <div class="chat-quick" id="quick-chat" style="display:none">
+          <button class="chat-quick-btn" onclick="askAI('What are the latest cricket scores and news?')">🏏 Cricket</button>
+          <button class="chat-quick-btn" onclick="askAI('Tell me latest Bollywood news')">🎬 Bollywood</button>
+          <button class="chat-quick-btn" onclick="askAI('What is happening in India today?')">📰 News</button>
+          <button class="chat-quick-btn" onclick="askAI('Tell me a fun fact')">🤓 Fun fact</button>
+          <button class="chat-quick-btn" onclick="askAI('Recommend a good Netflix show')">📺 Netflix?</button>
+          <button class="chat-quick-btn" onclick="askAI('Tell me a funny joke')">😂 Joke!</button>
+          <button class="chat-quick-btn" onclick="askAI('Give me a motivational quote')">💪 Motivation</button>
+          <button class="chat-quick-btn" onclick="askAI('What are some good restaurants in Delhi?')">🍕 Food?</button>
+        </div>
+        <div class="chat-wrap">
+          <div class="chat-messages" id="chat-messages">
+            <div class="chat-msg ai"><div class="ai-label">✦ SSV Assistant</div>Hello! 👋 I am your AI assistant from Saxena Singhal and Vaid.<br><br>Switch between <strong>Tax Mode</strong> for GST, ITR and tax queries or <strong>Chat Mode</strong> to talk about cricket, Bollywood, news or anything else! 😊</div>
+          </div>
+          <div class="chat-inp-row">
+            <input type="text" id="chat-inp" placeholder="Ask anything..." onkeydown="if(event.key==='Enter')sendChat()">
+            <button class="chat-send-btn" onclick="sendChat()">Send</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div id="csec-cnw" style="display:none">
+      <div class="news-card">
+        <div class="news-hdr"><div><h3>Tax & GST News for You</h3><div style="font-size:11px;opacity:.7;margin-top:1px" id="cnwts">Economic Times · Live Mint</div></div><div style="display:flex;align-items:center;gap:8px"><div class="live-dot"><span></span>Live</div><button class="rfbtn" id="cnw-rfbtn" onclick="fetchNews()">↻ Refresh</button></div></div>
+        <div class="news-body" id="clinews"><div class="news-loading"><span class="npulse"></span>Fetching updates...</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="mwrap" id="paymw">
+    <div class="modal">
+      <div class="mhd"><h3>Pay — Saxena Singhal & Vaid</h3><button class="mclose" onclick="closePay()">×</button></div>
+      <div class="mbody" id="paybody">
+        <div class="pamt"><div class="pl">Total Due</div><div class="pv">₹48,500</div></div>
+        <div class="ct" style="margin-bottom:8px">Choose Method</div>
+        <div class="uopts"><button class="ubtn sel" onclick="selM(this,'upi')">UPI / GPay</button><button class="ubtn" onclick="selM(this,'qr')">QR Code</button><button class="ubtn" onclick="selM(this,'card')">Card</button><button class="ubtn" onclick="selM(this,'nb')">Net Banking</button></div>
+        <div id="payui"><label style="font-size:11px;color:var(--mu);display:block;margin-bottom:5px">Enter UPI ID</label><input class="uinp" type="text" placeholder="yourname@upi"></div>
+        <button class="paybtn" onclick="doPay()">Pay ₹48,500 →</button>
+        <div style="text-align:center;margin-top:7px;font-size:10px;color:var(--mu)">Secured by Razorpay · 256-bit SSL</div>
+      </div>
+      <div class="psuc" id="paysuc"><div class="pchk">✓</div><h4 style="font-size:15px;font-weight:500;margin-bottom:5px">Payment Successful!</h4><p style="font-size:12px;color:var(--mu)">₹48,500 paid · Ref: RZP-<span id="payref"></span><br>Receipt emailed to r.chopra@gmail.com</p><button onclick="closePay()" style="margin-top:11px;background:#1B4F72;color:#fff;border:none;padding:8px 18px;border-radius:7px;font-size:12px;font-weight:500;cursor:pointer;font-family:'DM Sans',sans-serif">Done</button></div>
+    </div>
+  </div>
+</div>
+
+<script>
+const FIRM='Saxena Singhal & Vaid';
+const EMP=[
+  {id:'priya.sharma',name:'Priya Sharma',dept:'Senior CA',attend:96,days:'22/23',project:'GST Audit – Sharma Pvt Ltd',prog:82,due:'May 20',status:'On Track',output:'Filed 3 GSTR-3B, reviewed 2 ledgers',selfTasks:['File GSTR-1 for Client A','Review audit workpapers','Update compliance tracker'],salary:95000,allowance:15000,tds:8500},
+  {id:'arjun.mehta',name:'Arjun Mehta',dept:'Taxation',attend:88,days:'20/23',project:'ITR Filing – Batch May',prog:65,due:'May 31',status:'On Track',output:'Processed 12 ITR forms, 4 calls',selfTasks:['Prepare ITR – Gupta family','Download Form 26AS'],salary:75000,allowance:12000,tds:5800},
+  {id:'sneha.gupta',name:'Sneha Gupta',dept:'Audit',attend:76,days:'17/23',project:'Statutory Audit – ABC Corp',prog:45,due:'Jun 10',status:'Delayed',output:'Bank recon, raised 2 queries',selfTasks:['Complete inventory sheets'],salary:70000,allowance:10000,tds:4900},
+  {id:'rohit.verma',name:'Rohit Verma',dept:'Compliance',attend:92,days:'21/23',project:'ROC Annual Filing',prog:90,due:'May 15',status:'On Track',output:'Submitted 6 ROC forms',selfTasks:['Submit MGT-7'],salary:68000,allowance:10000,tds:4600},
+  {id:'neha.joshi',name:'Neha Joshi',dept:'Tax Consultant',attend:84,days:'19/23',project:'TDS Returns Q4',prog:70,due:'May 28',status:'On Track',output:'TDS challans, 8 Form 16s',selfTasks:['Download TRACES report'],salary:72000,allowance:11000,tds:5100},
+  {id:'karan.bahl',name:'Karan Bahl',dept:'Trainee CA',attend:80,days:'18/23',project:'GST Reconciliation',prog:30,due:'Jun 5',status:'At Risk',output:'Assisted 3B recon, data entry',selfTasks:['Download GSTR-2B'],salary:35000,allowance:5000,tds:1500},
+];
+const CLIENTS=[
+  {name:'Rajesh Chopra',pan:'AABCP1234M',phone:'+91 98765 43210',type:'Proprietorship',due:48500,gst:'07AABCP1234M1Z5'},
+  {name:'Sunita Enterprises',pan:'BDETS5678P',phone:'+91 99112 34567',type:'Partnership',due:120000,gst:'07BDETS5678P1Z2'},
+  {name:'Kapoor & Sons Pvt Ltd',pan:'CCCPK9876Q',phone:'+91 98001 22345',type:'Pvt Ltd',due:75000,gst:'07CCCPK9876Q1Z3'},
+  {name:'Meena Agarwal',pan:'DDDMA4321R',phone:'+91 97654 87654',type:'Individual',due:0,gst:'N/A'},
+  {name:'Tech Bharat Infra',pan:'EEEBT2222S',phone:'+91 96543 21098',type:'Pvt Ltd',due:98500,gst:'07EEEBT2222S1Z5'},
+];
+const SLOTS=['9:00 AM','9:30 AM','10:00 AM','10:30 AM','11:00 AM','11:30 AM','2:00 PM','2:30 PM','3:00 PM','3:30 PM','4:00 PM','4:30 PM'];
+const MNAMES=['January','February','March','April','May','June','July','August','September','October','November','December'];
+const DAYS=['Su','Mo','Tu','We','Th','Fr','Sa'];
+const COMP_DATA=[
+  {month:'April 2025',items:[{date:'Apr 7',name:'TDS Payment – Mar',tag:'TDS',u:true},{date:'Apr 11',name:'GSTR-1 (Mar)',tag:'GST',u:true},{date:'Apr 15',name:'Advance Tax – FY26',tag:'IT',u:true},{date:'Apr 20',name:'GSTR-3B (Mar)',tag:'GST',u:true},{date:'Apr 30',name:'TDS Return Q4',tag:'TDS',u:true}]},
+  {month:'May 2025',items:[{date:'May 7',name:'TDS Payment – Apr',tag:'TDS',u:false},{date:'May 11',name:'GSTR-1 (Apr)',tag:'GST',u:false},{date:'May 15',name:'PF Contribution',tag:'PF',u:false},{date:'May 20',name:'GSTR-3B (Apr)',tag:'GST',u:false},{date:'May 31',name:'Form 16 Issue',tag:'TDS',u:false}]},
+  {month:'June 2025',items:[{date:'Jun 7',name:'TDS Payment – May',tag:'TDS',u:false},{date:'Jun 11',name:'GSTR-1 (May)',tag:'GST',u:false},{date:'Jun 15',name:'Advance Tax Q1',tag:'IT',u:false},{date:'Jun 20',name:'GSTR-3B (May)',tag:'GST',u:false},{date:'Jun 30',name:'ITR Filing Starts',tag:'IT',u:false}]},
+  {month:'July 2025',items:[{date:'Jul 7',name:'TDS Payment – Jun',tag:'TDS',u:false},{date:'Jul 11',name:'GSTR-1 (Jun)',tag:'GST',u:false},{date:'Jul 15',name:'Form 16A Issue',tag:'TDS',u:false},{date:'Jul 20',name:'GSTR-3B (Jun)',tag:'GST',u:false},{date:'Jul 31',name:'ITR Deadline (Ind)',tag:'IT',u:false}]},
+  {month:'August 2025',items:[{date:'Aug 7',name:'TDS Payment – Jul',tag:'TDS',u:false},{date:'Aug 11',name:'GSTR-1 (Jul)',tag:'GST',u:false},{date:'Aug 20',name:'GSTR-3B (Jul)',tag:'GST',u:false},{date:'Aug 31',name:'Tax Audit Report',tag:'Audit',u:false}]},
+  {month:'September 2025',items:[{date:'Sep 7',name:'TDS Payment – Aug',tag:'TDS',u:false},{date:'Sep 11',name:'GSTR-1 (Aug)',tag:'GST',u:false},{date:'Sep 15',name:'Advance Tax Q2',tag:'IT',u:false},{date:'Sep 20',name:'GSTR-3B (Aug)',tag:'GST',u:false},{date:'Sep 30',name:'ITR Audit Deadline',tag:'IT',u:false}]},
+];
+const BULK_TEMPLATES={
+  gst:'Dear Client,\n\nThis is a reminder that the GST filing deadline is approaching. Please ensure your invoices and purchase data are ready.\n\nDue date: 20th of this month\n\nFor assistance, contact us at +91-XXXXXXXXXX.\n\nRegards,\nSaxena Singhal & Vaid',
+  itr:'Dear Client,\n\nThe Income Tax Return (ITR) filing season has begun. Please arrange the following documents:\n• Form 16 / Form 26AS\n• Bank statements\n• Investment proofs\n\nOur team will contact you shortly.\n\nRegards,\nSaxena Singhal & Vaid',
+  payment:'Dear Client,\n\nThis is a gentle reminder that your professional fee payment is outstanding. Kindly clear the dues at your earliest convenience to avoid service interruption.\n\nYou can pay online through the portal.\n\nRegards,\nSaxena Singhal & Vaid',
+  tds:'Dear Client,\n\nQuarterly TDS return filing is due. Please ensure:\n• All TDS challan payments are complete\n• Employee salary data is updated\n• Form 16 will be issued post filing\n\nRegards,\nSaxena Singhal & Vaid'
+};
+
+let assignedTasks=[
+  {id:1,title:'Prepare GSTR-1 for Sunita Enterprises – May 2025',emp:'Priya Sharma',empId:'priya.sharma',priority:'High',due:'2025-05-10',done:false},
+  {id:2,title:'Reconcile TDS challan data for Q4 FY25',emp:'Arjun Mehta',empId:'arjun.mehta',priority:'Medium',due:'2025-05-15',done:false},
+  {id:3,title:'Collect audit documents from ABC Corp',emp:'Sneha Gupta',empId:'sneha.gupta',priority:'High',due:'2025-05-08',done:true},
+  {id:4,title:'File MGT-7 and DIR-3 KYC on MCA portal',emp:'Rohit Verma',empId:'rohit.verma',priority:'Medium',due:'2025-05-14',done:false},
+];
+let appointments=[
+  {id:1,client:'Rajesh Chopra',date:'2025-05-03',slot:'10:00 AM',purpose:'GST Consultation',notes:'Q4 GSTR-3B discussion',status:'confirmed'},
+  {id:2,client:'Sunita Enterprises',date:'2025-05-03',slot:'11:30 AM',purpose:'Audit Discussion',notes:'Half-year review',status:'pending'},
+  {id:3,client:'Kapoor & Sons Pvt Ltd',date:'2025-05-07',slot:'9:00 AM',purpose:'ITR Filing Review',notes:'AY 2025-26',status:'confirmed'},
+  {id:4,client:'Meena Agarwal',date:'2025-05-09',slot:'2:00 PM',purpose:'Tax Planning',notes:'Equity query',status:'pending'},
+  {id:5,client:'Tech Bharat Infra',date:'2025-05-14',slot:'3:30 PM',purpose:'ROC Compliance',notes:'Annual filing',status:'completed'},
+];
+let invItems=[{desc:'GST Filing Q4 FY25 (GSTR-1 + GSTR-3B)',amt:18000}];
+let payrollStatus={};
+let selfTasksMap={};
+let calY=2025,calM=4,selDate=null,selSlot=null;
+let calY2=2025,calM2=4,selDate2=null,selSlot2=null;
+let curRole='admin',curEmp=null,taskFilter='all',aptFilter='all';
+let newsCache=null,newsFetching=false;
+let chatHistory=[];
+
+const fmt=n=>'₹'+n.toLocaleString('en-IN');
+function toast(msg){const t=document.getElementById('toast');t.textContent=msg;t.style.opacity='1';setTimeout(()=>t.style.opacity='0',2500);}
+function setRole(r){curRole=r;['admin','employee','client'].forEach(x=>document.getElementById('tab-'+x)?.classList.toggle('active',x===r));}
+function showSec(s,role){
+  const p=role==='a'?'asec':role==='e'?'esec':'csec';
+  const b=role==='a'?'asb':role==='e'?'esb':'csb';
+  document.querySelectorAll('[id^="'+p+'-"]').forEach(el=>el.style.display='none');
+  document.querySelectorAll('[id^="'+b+'-"]').forEach(el=>el.classList.remove('active'));
+  const sec=document.getElementById(p+'-'+s);if(sec)sec.style.display='block';
+  const btn=document.getElementById(b+'-'+s);if(btn)btn.classList.add('active');
+  if((s==='nws'||s==='enw'||s==='cnw')&&!newsCache&&!newsFetching)fetchNews();
+  if(s==='inbox')renderEmpInbox();
+  if(s==='comp')renderCompCal();
+  if(s==='pay')renderPayroll();
+  if(s==='rev')renderRevenue();
+  if(s==='itr')renderITRStatus();
+}
+function doLogin(){
+  const u=document.getElementById('lu').value.trim();
+  const p=document.getElementById('lp').value.trim();
+  if(!u||!p){alert('Enter credentials');return;}
+  document.getElementById('ls').classList.remove('active');
+  if(curRole==='client'){document.getElementById('cs').classList.add('active');document.getElementById('paymw').style.display='none';renderClientApts();renderCal2();}
+  else if(curRole==='employee'){curEmp=EMP.find(e=>e.id===u)||EMP[0];if(!selfTasksMap[curEmp.id])selfTasksMap[curEmp.id]=curEmp.selfTasks.map((t,i)=>({text:t,done:false,id:i}));document.getElementById('es').classList.add('active');renderEmpView(curEmp);updateEmpBadge();}
+  else{document.getElementById('as').classList.add('active');renderAdminEmp();renderAdminCli();renderReminders();renderCal();renderAptList();updateAptStats();populateEmpDropdown();renderAdminTaskList();updateTaskBadge();populateInvClients();document.getElementById('tddate').textContent=new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short'});const td=new Date();td.setDate(td.getDate()+3);document.getElementById('ta-due').value=td.toISOString().split('T')[0];document.getElementById('inv-date').value=new Date().toISOString().split('T')[0];const dd=new Date();dd.setDate(dd.getDate()+30);document.getElementById('inv-due-date').value=dd.toISOString().split('T')[0];updateInvTotal();}
+}
+function logout(){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));document.getElementById('ls').classList.add('active');newsCache=null;}
+
+// TASKS
+function populateEmpDropdown(){document.getElementById('ta-emp').innerHTML='<option value="">Select</option>'+EMP.map(e=>`<option value="${e.id}">${e.name} (${e.dept})</option>`).join('');}
+function assignTask(){
+  const title=document.getElementById('ta-title').value.trim(),empId=document.getElementById('ta-emp').value,priority=document.getElementById('ta-priority').value,due=document.getElementById('ta-due').value;
+  if(!title){toast('Enter a task');return;}if(!empId){toast('Select an employee');return;}
+  const emp=EMP.find(e=>e.id===empId);
+  assignedTasks.unshift({id:Date.now(),title,emp:emp.name,empId,priority,due,done:false});
+  document.getElementById('ta-title').value='';document.getElementById('ta-emp').value='';
+  renderAdminTaskList();updateTaskBadge();updateEmpBadge();toast('Task assigned to '+emp.name+' ✓');
+}
+function renderAdminTaskList(){
+  const filtered=assignedTasks.filter(t=>taskFilter==='all'||(taskFilter==='done'?t.done:!t.done));
+  const pending=assignedTasks.filter(t=>!t.done).length;
+  document.getElementById('task-stats-lbl').textContent=`${pending} pending · ${assignedTasks.filter(t=>t.done).length} done`;
+  const el=document.getElementById('admin-task-list');
+  if(!filtered.length){el.innerHTML='<div class="empty-state">No tasks</div>';return;}
+  el.innerHTML=filtered.map(t=>{const pc=t.priority==='High'?'ph':t.priority==='Medium'?'pm':'pl';const dl=t.due?new Date(t.due).toLocaleDateString('en-IN',{day:'numeric',month:'short'}):'No due';return`<div class="task-row"><span class="task-emp">${t.emp}</span><span class="task-title ${t.done?'done-t':''}">${t.title}</span><span class="tpri ${pc}">${t.priority}</span><span style="font-size:10px;color:var(--mu);white-space:nowrap">📅 ${dl}</span><div style="display:flex;gap:3px"><button class="xbtn ${t.done?'done-btn':''}" onclick="toggleAdminTask(${t.id})">${t.done?'✓ Done':'Mark Done'}</button><button class="xbtn" onclick="deleteTask(${t.id})" style="color:#C0392B">Del</button></div></div>`;}).join('');
+}
+function toggleAdminTask(id){const t=assignedTasks.find(x=>x.id===id);if(t){t.done=!t.done;renderAdminTaskList();updateTaskBadge();updateEmpBadge();}}
+function deleteTask(id){assignedTasks=assignedTasks.filter(x=>x.id!==id);renderAdminTaskList();updateTaskBadge();updateEmpBadge();}
+function filterTasks(f,btn){taskFilter=f;document.querySelectorAll('#asec-tasks .ft').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderAdminTaskList();}
+function updateTaskBadge(){const p=assignedTasks.filter(t=>!t.done).length;const b=document.getElementById('task-badge');if(b){b.style.display=p>0?'flex':'none';b.textContent=p;}}
+function renderEmpInbox(){if(!curEmp)return;const mt=assignedTasks.filter(t=>t.empId===curEmp.id);document.getElementById('inbox-count-lbl').textContent=mt.filter(t=>!t.done).length+' pending';const el=document.getElementById('emp-inbox-list');if(!mt.length){el.innerHTML='<div class="empty-state">No tasks assigned yet</div>';return;}el.innerHTML=mt.map(t=>{const pc=t.priority==='High'?'ph':t.priority==='Medium'?'pm':'pl';const dl=t.due?new Date(t.due).toLocaleDateString('en-IN',{day:'numeric',month:'short'}):'No due';return`<div class="emp-task-item from-admin"><div class="etcb ${t.done?'done':''}" onclick="toggleEmpInboxTask(${t.id})">${t.done?'✓':''}</div><div style="flex:1;min-width:0"><div style="font-size:13px">${t.title}<span class="from-tag from-admin-tag">Admin</span></div><div style="font-size:11px;color:var(--mu);margin-top:2px"><span class="tpri ${pc}" style="margin-right:5px">${t.priority}</span>Due: ${dl}</div></div></div>`;}).join('');}
+function toggleEmpInboxTask(id){const t=assignedTasks.find(x=>x.id===id);if(t){t.done=!t.done;renderEmpInbox();updateEmpBadge();updateTaskBadge();}}
+function updateEmpBadge(){if(!curEmp)return;const p=assignedTasks.filter(t=>t.empId===curEmp.id&&!t.done).length;const b=document.getElementById('emp-task-badge');if(b){b.style.display=p>0?'flex':'none';b.textContent=p;}}
+
+// INVOICE
+function populateInvClients(){document.getElementById('inv-client').innerHTML='<option value="">Select Client</option>'+CLIENTS.map(c=>'<option value="'+c.name+'">'+c.name+'</option>').join('');}
+function addInvItem(){const list=document.getElementById('inv-items-list');const div=document.createElement('div');div.className='inv-item-row';div.innerHTML='<input type="text" placeholder="Service description"><input type="number" class="amt-inp" placeholder="Amount" oninput="updateInvTotal()"><button onclick="removeInvItem(this)" style="padding:5px 9px;border:1px solid #FDEDEC;background:#FDEDEC;color:#C0392B;border-radius:6px;cursor:pointer;font-size:12px">&#x2715;</button>';list.appendChild(div);div.querySelector('input').addEventListener('input',updateInvTotal);}
+function removeInvItem(btn){btn.parentElement.remove();updateInvTotal();}
+function updateInvTotal(){const rows=document.querySelectorAll('.inv-item-row');let sub=0;rows.forEach(r=>{const a=parseFloat((r.querySelector('.amt-inp') ? r.querySelector('.amt-inp').value : 0))||0;sub+=a;});const gstR=parseFloat((document.getElementById('inv-gst') ? document.getElementById('inv-gst').value : 18))||18;const gstAmt=sub*gstR/100;const total=sub+gstAmt;document.getElementById('inv-subtotal').textContent=fmt(sub);document.getElementById('inv-gst-amt').textContent=fmt(Math.round(gstAmt))+' ('+gstR+'%)';document.getElementById('inv-total-amt').textContent=fmt(Math.round(total));}
+function generateInvoice(){
+  const clientName=document.getElementById('inv-client').value;if(!clientName){toast('Select a client first');return;}
+  const client=CLIENTS.find(c=>c.name===clientName)||{pan:'N/A',gst:'N/A'};
+  const rows=document.querySelectorAll('.inv-item-row');let sub=0;const items=[];
+  rows.forEach(r=>{const di=r.querySelector('input[type="text"]');const ai=r.querySelector('.amt-inp');const desc=di?di.value:'';const amt=parseFloat(ai?ai.value:0)||0;if(desc&&amt){sub+=amt;items.push({desc:desc,amt:amt});}});
+  if(!items.length){toast('Add at least one service item');return;}
+  const gstR=parseFloat(document.getElementById('inv-gst').value)||18;
+  const gstAmt=Math.round(sub*gstR/100);const total=sub+gstAmt;
+  const invNo=document.getElementById('inv-no').value;
+  const invDate=new Date(document.getElementById('inv-date').value).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  const dueDate=new Date(document.getElementById('inv-due-date').value).toLocaleDateString('en-IN',{day:'numeric',month:'long',year:'numeric'});
+  const terms=document.getElementById('inv-terms').value;
+  document.getElementById('prev-inv-no').textContent=invNo;
+  document.getElementById('prev-inv-date').textContent=invDate;
+  document.getElementById('prev-client-name').textContent=clientName;
+  document.getElementById('prev-client-pan').textContent='PAN: '+client.pan;
+  document.getElementById('prev-client-gst').textContent='GST: '+client.gst;
+  document.getElementById('prev-terms').textContent=terms;
+  document.getElementById('prev-due').textContent='Due: '+dueDate;
+  document.getElementById('prev-items').innerHTML=items.map(i=>`<tr><td>${i.desc}</td><td>1</td><td class="amt-col">${fmt(i.amt)}</td><td class="amt-col">${fmt(Math.round(i.amt*gstR/100))}</td><td class="amt-col">${fmt(Math.round(i.amt*(1+gstR/100)))}</td></tr>`).join('')+`<tr style="background:#F7F6F2;font-weight:500"><td colspan="3">Subtotal</td><td class="amt-col">${fmt(gstAmt)}</td><td class="amt-col">${fmt(sub)}</td></tr>`;
+  document.getElementById('prev-total').textContent=fmt(total);
+  document.getElementById('inv-preview').style.display='block';
+  document.getElementById('inv-preview').scrollIntoView({behavior:'smooth'});
+  toast('Invoice generated! Click Print to save as PDF ✓');
+}
+
+// PAYROLL
+function renderPayroll(){
+  const body=document.getElementById('payroll-body');
+  let tb=0,ta=0,tg=0,tt=0,tn=0;
+  body.innerHTML=EMP.map(e=>{
+    const gross=e.salary+e.allowance;const net=gross-e.tds;
+    tb+=e.salary;ta+=e.allowance;tg+=gross;tt+=e.tds;tn+=net;
+    const paid=payrollStatus[e.id];
+    return`<tr><td style="font-weight:500">${e.name}</td><td style="color:var(--mu)">${e.dept}</td><td><input class="payroll-inp" type="number" value="${e.salary}" onchange="updatePayrollTotal()"></td><td><input class="payroll-inp" type="number" value="${e.allowance}" onchange="updatePayrollTotal()"></td><td style="font-weight:500">${fmt(gross)}</td><td style="color:#C0392B">${fmt(e.tds)}</td><td style="font-weight:500;color:#1E8449">${fmt(net)}</td><td><span class="bdg ${paid?'bg':'ba'}" id="ps-${e.id}">${paid?'Paid':'Pending'}</span></td></tr>`;
+  }).join('');
+  document.getElementById('pt-basic').textContent=fmt(tb);
+  document.getElementById('pt-allow').textContent=fmt(ta);
+  document.getElementById('pt-gross').textContent=fmt(tg);
+  document.getElementById('pt-tds').textContent=fmt(tt);
+  document.getElementById('pt-net').textContent=fmt(tn);
+  document.getElementById('total-payroll').textContent=fmt(tn);
+}
+function updatePayrollTotal(){renderPayroll();}
+function markAllPaid(){EMP.forEach(e=>payrollStatus[e.id]=true);renderPayroll();toast('All salaries marked as paid ✓');}
+
+// REVENUE
+function renderRevenue(){
+  const max=Math.max(...CLIENTS.map(c=>c.due));
+  document.getElementById('rev-bars').innerHTML=CLIENTS.filter(c=>c.due>0).map(c=>`<div class="rev-bar-wrap"><div class="rev-bar-label">${c.name}</div><div class="rev-bar-track"><div class="rev-bar-fill" style="width:${Math.round(c.due/max*100)}%"></div></div><div class="rev-bar-val">${fmt(c.due)}</div></div>`).join('');
+  const services=[{name:'GST Filing & Compliance',amt:185000},{name:'Income Tax / ITR',amt:145000},{name:'Statutory Audit',amt:210000},{name:'ROC / MCA Filings',amt:95000},{name:'TDS Returns',amt:68000},{name:'General Consultation',amt:45000}];
+  const maxS=Math.max(...services.map(s=>s.amt));
+  document.getElementById('service-bars').innerHTML=services.map(s=>`<div class="rev-bar-wrap"><div class="rev-bar-label">${s.name}</div><div class="rev-bar-track"><div class="rev-bar-fill" style="width:${Math.round(s.amt/maxS*100)}%;background:#117A65"></div></div><div class="rev-bar-val">${fmt(s.amt)}</div></div>`).join('');
+}
+
+// COMPLIANCE CALENDAR
+function renderCompCal(){
+  const tagColors={GST:'#117A65',IT:'#1B4F72',TDS:'#884EA0',PF:'#B7950B',Audit:'#C0392B'};
+  document.getElementById('comp-grid').innerHTML=COMP_DATA.map(m=>`<div class="comp-month"><div class="comp-mname">${m.month}</div>${m.items.map(i=>`<div class="comp-item"><span class="comp-date ${i.u?'urgent':'medium'}" style="background:${tagColors[i.tag]||'#1B4F72'}">${i.date}</span><div><div class="comp-name">${i.name}</div><div class="comp-tag">${i.tag}</div></div></div>`).join('')}</div>`).join('');
+}
+
+// BULK MESSAGE
+function setBulkTemplate(t){document.getElementById('bulk-msg').value=BULK_TEMPLATES[t];}
+function toggleAllClients(cb){if(cb.checked)document.getElementById('bulk-due').checked=false;}
+function sendBulkMsg(){
+  const msg=document.getElementById('bulk-msg').value.trim();if(!msg){toast('Enter a message');return;}
+  const dueOnly=document.getElementById('bulk-due').checked;
+  const targets=dueOnly?CLIENTS.filter(c=>c.due>0):CLIENTS;
+  const log=document.getElementById('bulk-log');
+  const t=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+  const el=document.createElement('div');el.className='bulk-log-item';
+  el.innerHTML=`<strong>✓ Message sent to ${targets.length} clients</strong> · ${t}<br><span style="color:var(--mu);font-size:11px">${targets.map(c=>c.name).join(', ')}</span>`;
+  log.prepend(el);document.getElementById('bulk-msg').value='';
+  toast(`Message sent to ${targets.length} clients ✓`);
+}
+
+// ITR STATUS
+function renderITRStatus(){
+  const steps=[{label:'Return Filed',date:'12 Jul 2024',done:true},{label:'e-Verified',date:'14 Jul 2024',done:true},{label:'Processing Started',date:'20 Jul 2024',done:true},{label:'Intimation Issued u/s 143(1)',date:'15 Sep 2024',done:true},{label:'Refund Initiated',date:'28 Oct 2024',done:true},{label:'Refund Credited',date:'Pending',done:false}];
+  document.getElementById('itr-timeline').innerHTML=steps.map((s,i)=>`<div style="display:flex;align-items:flex-start;gap:12px;padding:10px 0;${i<steps.length-1?'border-bottom:1px solid var(--bd)':''}"><div style="width:28px;height:28px;border-radius:50%;background:${s.done?'#1E8449':'#F0EDE5'};color:${s.done?'#fff':'#aaa'};display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;flex-shrink:0">${s.done?'✓':i+1}</div><div><div style="font-size:13px;font-weight:${s.done?'500':'400'};color:${s.done?'var(--tx)':'var(--mu)'}">${s.label}</div><div style="font-size:11px;color:var(--mu);margin-top:2px">${s.date}</div></div></div>`).join('');
+  document.getElementById('itr-history').innerHTML=[{ay:'2023-24',form:'ITR-4',filed:'29 Jul 2023',income:'₹15,80,000',tax:'₹1,62,000',status:'Processed'},{ay:'2022-23',form:'ITR-4',filed:'31 Jul 2022',income:'₹12,40,000',tax:'₹1,18,400',status:'Processed'},{ay:'2021-22',form:'ITR-4',filed:'15 Dec 2021',income:'₹10,20,000',tax:'₹84,600',status:'Processed'}].map(r=>`<tr><td style="font-weight:500">${r.ay}</td><td>${r.form}</td><td>${r.filed}</td><td>${r.income}</td><td>${r.tax}</td><td><span class="bdg bg">${r.status}</span></td></tr>`).join('');
+}
+
+// AI TAX CHAT
+// ── AI TAX ASSISTANT — Claude AI with smart local fallback ───
+function askAI(q){document.getElementById('chat-inp').value=q;sendChat();}
+
+let currentMode='tax';
+function setMode(mode){
+  currentMode=mode;
+  const taxBtn=document.getElementById('mode-tax');
+  const chatBtn=document.getElementById('mode-chat');
+  const desc=document.getElementById('mode-desc');
+  const quickTax=document.getElementById('quick-tax');
+  const quickChat=document.getElementById('quick-chat');
+  if(mode==='tax'){
+    taxBtn.style.background='#1B4F72';taxBtn.style.color='#fff';
+    chatBtn.style.background='transparent';chatBtn.style.color='#888';
+    quickTax.style.display='flex';quickChat.style.display='none';
+    desc.textContent='Ask me anything about Indian taxes, GST, TDS, or your filing!';
+    const msgs=document.getElementById('chat-messages');
+    msgs.innerHTML+='<div class="chat-msg ai"><div class="ai-label">✦ SSV Assistant</div>Switched to <strong>Tax Mode</strong> 💼 Ask me anything about GST, Income Tax, TDS, ITR or any Indian tax query!</div>';
+    msgs.scrollTop=msgs.scrollHeight;
+  } else {
+    chatBtn.style.background='#117A65';chatBtn.style.color='#fff';
+    taxBtn.style.background='transparent';taxBtn.style.color='#888';
+    quickTax.style.display='none';quickChat.style.display='flex';
+    desc.textContent='Chat about anything — cricket, Bollywood, news, jokes or just a friendly conversation!';
+    const msgs=document.getElementById('chat-messages');
+    msgs.innerHTML+='<div class="chat-msg ai"><div class="ai-label">✦ SSV Assistant</div>Switched to <strong>Chat Mode</strong> 💬 Now we can talk about anything — cricket scores, Bollywood, jokes, recommendations or just a casual chat! What is on your mind? 😄</div>';
+    msgs.scrollTop=msgs.scrollHeight;
+  }
+}
+
+async function sendChat(){
+  const inp=document.getElementById('chat-inp');
+  const msg=inp.value.trim();if(!msg)return;
+  inp.value='';
+  const msgs=document.getElementById('chat-messages');
+  msgs.innerHTML+=`<div class="chat-msg user">${escHtml(msg)}</div>`;
+  msgs.innerHTML+=`<div class="chat-msg loading" id="ai-loading"><span class="npulse"></span>Thinking...</div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+  chatHistory.push({role:'user',content:msg});
+
+  let reply='';
+  try{
+    // Try real Claude AI via our server
+    const res=await fetch('/api/chat',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({message:msg,history:chatHistory.slice(-8),mode:currentMode})
+    });
+    if(res.ok){
+      const d=await res.json();
+      if(d.reply) reply=d.reply;
+      else if(d.reason==='no_credits') reply=getLocalTaxAnswer(msg)+'<br><br><span style="font-size:11px;color:var(--am)">💡 Add Anthropic API credits for full AI power</span>';
+      else if(d.reason==='no_key') reply=getLocalTaxAnswer(msg)+'<br><br><span style="font-size:11px;color:var(--mu)">💡 Add ANTHROPIC_API_KEY in .env for Claude AI responses</span>';
+      else reply=getLocalTaxAnswer(msg);
+    } else { reply=getLocalTaxAnswer(msg); }
+  }catch(e){ reply=getLocalTaxAnswer(msg); }
+
+  chatHistory.push({role:'assistant',content:reply});
+  document.getElementById('ai-loading')?.remove();
+  msgs.innerHTML+=`<div class="chat-msg ai"><div class="ai-label">✦ SSV Tax Assistant</div>${reply}</div>`;
+  msgs.scrollTop=msgs.scrollHeight;
+}
+
+function escHtml(t){return t.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+
+function getLocalTaxAnswer(q){
+  const ql=q.toLowerCase();
+  // GST
+  if((ql.includes('gst')||ql.includes('gstin'))&&(ql.includes('due')||ql.includes('deadline')||ql.includes('date')))
+    return'<strong>GST Filing Due Dates:</strong><br>• <strong>GSTR-1</strong> (Sales): 11th of next month<br>• <strong>GSTR-3B</strong> (Summary + Payment): 20th of next month<br>• <strong>GSTR-9</strong> (Annual): 31st December<br>• <strong>GSTR-9C</strong> (Reconciliation): 31st December<br><br>⚠️ Late filing penalty: ₹50/day (₹25 CGST + ₹25 SGST) + 18% interest on tax dues.';
+  if(ql.includes('gst')&&(ql.includes('register')||ql.includes('turnover')||ql.includes('limit')))
+    return'<strong>GST Registration Threshold:</strong><br>• <strong>Goods:</strong> Annual turnover above ₹40 lakh (₹20L in special category states)<br>• <strong>Services:</strong> Annual turnover above ₹20 lakh (₹10L in special states)<br>• <strong>E-commerce sellers:</strong> Mandatory regardless of turnover<br><br>Voluntary registration is also possible below threshold. Apply at <strong>gst.gov.in</strong>';
+  if(ql.includes('itc')||ql.includes('input tax credit'))
+    return'<strong>Input Tax Credit (ITC) Rules:</strong><br>• ITC can only be claimed if invoice appears in your <strong>GSTR-2B</strong><br>• Invoice must be paid within <strong>180 days</strong> to retain ITC<br>• Goods/services must be used for <strong>business purposes</strong><br>• Cannot claim ITC on: personal use, food, membership fees, motor vehicles (with exceptions)<br><br>Always reconcile GSTR-2B with purchase register before claiming ITC.';
+  // Income Tax
+  if((ql.includes('tds')||ql.includes('tax deduct'))&&(ql.includes('salary')||ql.includes('income')))
+    return'<strong>TDS on Salary — New Tax Regime FY 2025-26:</strong><br>• Up to ₹4L: <strong>Nil</strong><br>• ₹4L–₹8L: <strong>5%</strong><br>• ₹8L–₹12L: <strong>10%</strong><br>• ₹12L–₹16L: <strong>15%</strong><br>• ₹16L–₹20L: <strong>20%</strong><br>• ₹20L–₹24L: <strong>25%</strong><br>• Above ₹24L: <strong>30%</strong><br><br>Standard deduction of ₹75,000 applies under new regime.';
+  if(ql.includes('itr')&&(ql.includes('document')||ql.includes('need')||ql.includes('require')))
+    return'<strong>Documents for ITR Filing:</strong><br>• PAN card + Aadhaar card<br>• Form 16 (from employer)<br>• Form 26AS / AIS / TIS<br>• Bank statements (all accounts)<br>• Investment proofs — 80C (PPF, ELSS, LIC), 80D (health insurance)<br>• Capital gains statements (mutual funds, shares)<br>• Home loan interest certificate (for 24B deduction)<br>• Rental income details (if applicable)<br><br>📅 Due date: July 31, 2025 for individuals (AY 2025-26)';
+  if(ql.includes('old')&&ql.includes('new')||ql.includes('regime')&&(ql.includes('which')||ql.includes('better')||ql.includes('differ')||ql.includes('compare')))
+    return'<strong>Old vs New Tax Regime — Which is Better?</strong><br><br><strong>New Regime (Default):</strong> Lower slabs, no deductions<br><strong>Old Regime:</strong> Higher slabs but deductions allowed<br><br><strong>Choose Old if your deductions exceed:</strong><br>• 80C: ₹1.5L + 80D: ₹25K + HRA + home loan → usually if total >₹3.75L<br><br><strong>Quick rule:</strong><br>• Income ₹10L with ₹2L deductions → New Regime ✓<br>• Income ₹10L with ₹4L deductions → Old Regime ✓<br><br>💡 Ask your CA at SSV to calculate exact breakeven for your profile.';
+  if(ql.includes('80c')||ql.includes('tax saving')||ql.includes('save tax')||ql.includes('deduction'))
+    return'<strong>Top Tax Saving Options — FY 2025-26:</strong><br>• <strong>80C</strong> (₹1.5L limit): ELSS, PPF, LIC, EPF, NSC, Sukanya Samriddhi, home loan principal<br>• <strong>80D</strong>: Health insurance — ₹25K (self/family), ₹50K (senior citizen parents)<br>• <strong>80CCD(1B)</strong>: NPS — extra ₹50K deduction over 80C<br>• <strong>24B</strong>: Home loan interest up to ₹2L<br>• <strong>HRA</strong>: Rent exemption if in rented accommodation<br>• <strong>LTA</strong>: Leave travel allowance (2 journeys in 4 years)<br><br>⚠️ Most deductions only apply under <strong>Old Tax Regime</strong>';
+  if(ql.includes('advance tax')||ql.includes('advance tax'))
+    return'<strong>Advance Tax Due Dates FY 2025-26:</strong><br>• <strong>15th June:</strong> 15% of total tax<br>• <strong>15th September:</strong> 45% of total tax<br>• <strong>15th December:</strong> 75% of total tax<br>• <strong>15th March:</strong> 100% of total tax<br><br>Applicable if total tax liability > ₹10,000. Seniors (60+) with no business income are exempt. Late payment attracts 1% interest per month under sections 234B and 234C.';
+  if(ql.includes('pan')&&(ql.includes('apply')||ql.includes('get')||ql.includes('how')))
+    return'<strong>How to Apply for PAN Card:</strong><br>• <strong>Online:</strong> Visit <strong>incometax.gov.in</strong> → Apply for New PAN<br>• Through <strong>NSDL</strong> (nsdlpan.com) or <strong>UTIITSL</strong> (utiitsl.com)<br>• Fee: ₹107 (India) / ₹1,017 (outside India)<br>• Documents: Aadhaar + address proof + photo<br>• Processing time: 7–15 working days<br><br>💡 Instant e-PAN is also available free for Aadhaar holders at the income tax portal.';
+  if(ql.includes('tds')&&(ql.includes('return')||ql.includes('form 24')||ql.includes('26q')))
+    return'<strong>TDS Return Filing:</strong><br>• <strong>Form 24Q</strong>: TDS on salary<br>• <strong>Form 26Q</strong>: TDS on non-salary payments<br>• <strong>Form 27Q</strong>: TDS on payments to non-residents<br><br><strong>Quarterly Due Dates:</strong><br>• Q1 (Apr–Jun): 31st July<br>• Q2 (Jul–Sep): 31st October<br>• Q3 (Oct–Dec): 31st January<br>• Q4 (Jan–Mar): 31st May<br><br>⚠️ Late filing: ₹200/day penalty under section 234E';
+  if(ql.includes('capital gain')||ql.includes('shares')||ql.includes('mutual fund')||ql.includes('stock'))
+    return'<strong>Capital Gains Tax — India (FY 2025-26):</strong><br><br><strong>Equity (Shares / Equity MF):</strong><br>• STCG (held < 1 year): <strong>20%</strong><br>• LTCG (held > 1 year): <strong>12.5%</strong> above ₹1.25L exemption<br><br><strong>Debt / Other Assets:</strong><br>• STCG: Added to income, taxed at slab rate<br>• LTCG (held > 2 years): <strong>12.5%</strong> without indexation<br><br>💡 Harvest losses before March 31 to offset gains (Tax Loss Harvesting)';
+  if(ql.includes('gst')&&ql.includes('cancel')||ql.includes('surrender'))
+    return'<strong>GST Cancellation Process:</strong><br>• Log in to gst.gov.in → Services → Registration → Application for Cancellation<br>• File pending returns (GSTR-1, GSTR-3B) before applying<br>• File GSTR-10 (Final Return) within 3 months of cancellation<br>• Reason needed: business closed, turnover below threshold, etc.<br><br>⚠️ Non-filing of GSTR-10 attracts ₹200/day penalty';
+  // Greetings
+  if(['hi','hello','hey','hii','helo','namaste','good morning','good evening','good afternoon','sup','hiya'].some(w=>ql.trim()===w||ql.trim().startsWith(w+' ')||ql.trim().startsWith(w+'!')))
+    return'Hello! 👋 Welcome to Saxena Singhal & Vaid\'s Tax Assistant!<br><br>I can help you with:<br>• GST filing, rates and deadlines<br>• Income Tax, ITR filing<br>• TDS calculations<br>• Tax saving tips<br>• Capital gains<br>• PAN, Aadhaar related queries<br><br>What would you like to know today? 😊';
+  if(ql.includes('how are you')||ql.includes('how r you')||ql.includes('how are u'))
+    return'I\'m doing great, thank you for asking! 😊<br><br>Ready to help you with all your tax queries. What\'s on your mind today?';
+  if(ql.includes('thank')||ql.includes('thanks')||ql.includes('thanku')||ql.includes('thank you'))
+    return'You\'re most welcome! 😊 Happy to help anytime.<br><br>Is there anything else you\'d like to know about taxes or GST?';
+  if(ql.includes('bye')||ql.includes('goodbye')||ql.includes('see you')||ql.includes('ok bye'))
+    return'Goodbye! 👋 Have a great day!<br><br>Feel free to come back anytime you have tax queries. Saxena Singhal & Vaid is always here to help! 😊';
+  if(ql.includes('who are you')||ql.includes('what are you')||ql.includes('what can you do')||ql.includes('help'))
+    return'I\'m the <strong>SSV Tax Assistant</strong> — your personal AI guide for Indian tax queries! 🤖<br><br>I can help you with:<br>• <strong>GST</strong> — filing dates, ITC, registration<br>• <strong>Income Tax</strong> — ITR, slabs, deductions<br>• <strong>TDS</strong> — rates, returns, Form 16<br>• <strong>Tax Saving</strong> — 80C, 80D, NPS<br>• <strong>Capital Gains</strong> — shares, mutual funds<br>• <strong>Advance Tax</strong> — due dates, calculation<br><br>Just ask me anything! 😊';
+  if(ql.includes('good morning')||ql.includes('good evening')||ql.includes('good afternoon')||ql.includes('good night'))
+    return'Good day to you too! 😊 Welcome to SSV Tax Assistant!<br><br>How can I help you with your tax queries today?';
+  if(ql.includes('ok')||ql.includes('okay')||ql.includes('hmm')||ql.includes('sure')||ql.trim().length<4)
+    return'Sure! 😊 Feel free to ask me anything about GST, Income Tax, TDS, or any other tax related queries. I\'m here to help!';
+  // Default
+  return'That\'s a good question! Let me help you with that. 😊<br><br>Could you give me a bit more detail? For example:<br>• Are you asking about <strong>GST</strong>, <strong>Income Tax</strong>, or <strong>TDS</strong>?<br>• Is this for your business or personal taxes?<br><br>The more detail you share, the better I can help! Alternatively you can also pick one of the quick questions above. 😊';
+}
+
+// NEWS
+// NEWS — uses rss2json.com free API (no server needed, works directly in browser)
+const RSS2JSON='https://api.rss2json.com/v1/api.json?rss_url=';
+const NEWS_FEEDS=[
+  {url:'https://economictimes.indiatimes.com/topic/income-tax/rss.cms',tag:'Income Tax',tagColor:'#1B4F72',source:'Economic Times'},
+  {url:'https://economictimes.indiatimes.com/topic/gst/rss.cms',tag:'GST',tagColor:'#117A65',source:'Economic Times'},
+  {url:'https://economictimes.indiatimes.com/topic/tds/rss.cms',tag:'TDS',tagColor:'#884EA0',source:'Economic Times'},
+  {url:'https://economictimes.indiatimes.com/markets/rss.cms',tag:'Finance',tagColor:'#B7950B',source:'Economic Times'},
+];
+const FALLBACK_NEWS=[
+  {tag:'GST',tagColor:'#117A65',headline:'GSTN reminds all registered taxpayers to file GSTR-3B before the monthly due date to avoid late fees and 18% interest on outstanding tax dues.',impact:'High',date:'May 2025',source:'GST Council',link:'https://www.gst.gov.in'},
+  {tag:'Income Tax',tagColor:'#1B4F72',headline:'CBDT advises taxpayers to carefully verify Form 26AS and AIS before filing ITR for Assessment Year 2025-26 to avoid mismatches and notices.',impact:'High',date:'May 2025',source:'CBDT',link:'https://incometax.gov.in'},
+  {tag:'TDS',tagColor:'#884EA0',headline:'Employers must issue Form 16 to all salaried employees by May 31, 2025 for FY 2024-25 as per Income Tax Act requirements.',impact:'High',date:'May 2025',source:'Income Tax Dept.',link:'https://incometax.gov.in'},
+  {tag:'MCA',tagColor:'#B7950B',headline:'Ministry of Corporate Affairs reminds companies that annual ROC filings for FY 2024-25 must be completed on time to avoid additional fees and penalties.',impact:'Medium',date:'May 2025',source:'MCA',link:'https://mca.gov.in'},
+  {tag:'Budget',tagColor:'#C0392B',headline:'New income tax regime with lower slab rates continues for FY 2025-26 — taxpayers advised to compare both regimes before filing AY 2025-26 returns.',impact:'Medium',date:'May 2025',source:'Finance Ministry',link:'https://finmin.nic.in'},
+  {tag:'GST',tagColor:'#117A65',headline:'Input Tax Credit (ITC) can only be claimed if invoice appears in GSTR-2B — businesses must ensure proper reconciliation before claiming ITC.',impact:'Medium',date:'May 2025',source:'GST Council',link:'https://www.gst.gov.in'},
+];
+function guessImpact(title){const h=(title||'').toLowerCase();if(['deadline','penalty','notice','mandatory','last date','due date','new rule','amendment','budget','tax rate','crackdown','raid'].some(w=>h.includes(w)))return'High';if(['clarification','guide','tips','how to','explained','reminder'].some(w=>h.includes(w)))return'Low';return'Medium';}
+function renderNewsHTML(items){return items.map(n=>{const ic=n.impact==='High'?'br':n.impact==='Medium'?'ba':'bg';const lk=n.link?`<a href="${n.link}" target="_blank" style="color:#2471A3;text-decoration:none;font-size:11px"> · Read more →</a>`:'';return`<div class="ni"><div style="display:flex;align-items:center;gap:8px;margin-bottom:4px"><div class="ntag" style="color:${n.tagColor}">${n.tag}</div><span class="bdg ${ic}" style="font-size:9px">${n.impact} Impact</span></div><div class="nh">${n.headline}</div><div class="nm">${n.source} · ${n.date}${lk}</div></div>`;}).join('');}
+async function fetchNews(){
+  if(newsFetching)return;newsFetching=true;
+  ['nws-rfbtn','enw-rfbtn','cnw-rfbtn'].forEach(id=>{const b=document.getElementById(id);if(b){b.disabled=true;b.textContent='Loading...';}});
+  ['adminnews','empnews','clinews'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML='<div class="news-loading"><span class="npulse"></span>Fetching live news from Economic Times...</div>';});
+  try{
+    const results=[];
+    for(const feed of NEWS_FEEDS){
+      try{
+        const url=RSS2JSON+encodeURIComponent(feed.url)+'&count=2';
+        const res=await fetch(url);
+        const data=await res.json();
+        if(data.status==='ok'&&data.items){
+          data.items.forEach(item=>{
+            const headline=(item.title||'').replace(/<[^>]*>/g,'').replace(/&amp;/g,'&').replace(/&quot;/g,'"').trim();
+            if(!headline)return;
+            const date=item.pubDate?new Date(item.pubDate).toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}):'Today';
+            results.push({tag:feed.tag,tagColor:feed.tagColor,headline,impact:guessImpact(headline),date,source:feed.source,link:item.link||''});
+          });
+        }
+      }catch(e){continue;}
+    }
+    newsCache=results.length>0?results.slice(0,6):FALLBACK_NEWS;
+    const ts=(results.length>0?'Live · ':'Showing latest · ')+'Updated '+new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});
+    ['nwsts','enwts','cnwts'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent=ts;});
+    const html=renderNewsHTML(newsCache);
+    ['adminnews','empnews','clinews'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=html;});
+  }catch(e){
+    newsCache=FALLBACK_NEWS;
+    const html=renderNewsHTML(FALLBACK_NEWS);
+    ['adminnews','empnews','clinews'].forEach(id=>{const el=document.getElementById(id);if(el)el.innerHTML=html;});
+    ['nwsts','enwts','cnwts'].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent='Showing curated updates';});
+  }
+  newsFetching=false;
+  ['nws-rfbtn','enw-rfbtn','cnw-rfbtn'].forEach(id=>{const b=document.getElementById(id);if(b){b.disabled=false;b.textContent='↻ Refresh';}});
+}
+
+// ADMIN RENDERS
+function renderAdminEmp(){
+  document.getElementById('etbody').innerHTML=EMP.map(e=>{const ac=e.attend>=90?'bg':e.attend>=80?'ba':'br';const sc=e.status==='On Track'?'bg':e.status==='Delayed'?'ba':'br';const pc=e.prog>=80?'pgr':e.prog>=60?'pbl':e.prog>=40?'pam':'pre';return`<tr><td><div style="font-weight:500;font-size:12px">${e.name}</div><div style="font-size:10px;color:var(--mu)">${e.dept}</div></td><td><span class="bdg ${ac}">${e.attend}%</span></td><td><div style="font-size:10px;color:var(--mu);margin-bottom:2px;overflow:hidden;text-overflow:ellipsis">${e.project}</div><div style="display:flex;align-items:center;gap:5px"><div class="pb" style="flex:1"><div class="pf ${pc}" style="width:${e.prog}%"></div></div><span style="font-size:10px;font-weight:500">${e.prog}%</span></div></td><td><span class="bdg ${sc}">${e.status}</span></td></tr>`;}).join('');
+  document.getElementById('outlog').innerHTML=EMP.map(e=>`<div class="oi"><div style="display:flex;justify-content:space-between;margin-bottom:2px"><span style="font-weight:500;font-size:12px">${e.name}</span><span style="font-size:10px;color:var(--mu)">${e.dept}</span></div><div style="color:var(--mu);font-size:11px">${e.output}</div></div>`).join('');
+  document.getElementById('prgrid').innerHTML=EMP.map(e=>{const c=e.prog>=80?'pgr':e.prog>=60?'pbl':e.prog>=40?'pam':'pre';return`<div class="card" style="padding:11px"><div style="font-size:12px;font-weight:500;margin-bottom:2px">${e.project}</div><div style="font-size:10px;color:var(--mu);margin-bottom:7px">${e.name} · Due ${e.due}</div><div style="display:flex;align-items:center;gap:5px"><div class="pb" style="flex:1"><div class="pf ${c}" style="width:${e.prog}%"></div></div><span style="font-size:11px;font-weight:500">${e.prog}%</span></div></div>`;}).join('');
+}
+function renderAdminCli(){
+  document.getElementById('clilist').innerHTML=CLIENTS.map(c=>`<div class="crow"><div class="cav">${c.name.split(' ').map(w=>w[0]).slice(0,2).join('')}</div><div style="flex:1;min-width:0"><div style="font-weight:500;font-size:13px">${c.name}</div><div style="font-size:11px;color:var(--mu)">PAN: ${c.pan} · ${c.type} · ${c.phone}</div></div><div style="text-align:right;font-size:12px;font-weight:500;color:${c.due?'#C0392B':'#1E8449'}">${c.due?fmt(c.due):'Paid'}</div></div>`).join('');
+  document.getElementById('paylist').innerHTML=CLIENTS.filter(c=>c.due>0).map(c=>`<div class="prr"><div><div style="font-size:13px;font-weight:500">${c.name}</div><div style="font-size:11px;color:var(--mu)">${c.phone}</div></div><div style="text-align:right"><div style="font-size:14px;font-weight:600;color:#C0392B">${fmt(c.due)}</div></div></div>`).join('');
+}
+function renderReminders(){document.getElementById('remlist').innerHTML=CLIENTS.filter(c=>c.due>0).map(c=>`<div class="rr"><div><div style="font-size:13px;font-weight:500">${c.name}</div><div style="font-size:11px;color:var(--mu)">${fmt(c.due)} · ${c.phone}</div></div><div class="rac"><button class="rb" id="rs-${c.pan}" onclick="sendRem('${c.pan}','SMS','${c.name}')">SMS</button><button class="rb" id="re-${c.pan}" onclick="sendRem('${c.pan}','Email','${c.name}')">Email</button><button class="rb" id="rb-${c.pan}" onclick="sendRem('${c.pan}','Both','${c.name}')">Both</button></div></div>`).join('');}
+function sendRem(pan,type,name){const log=document.getElementById('remlog');const t=new Date().toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit'});['rs','re','rb'].forEach(p=>{const b=document.getElementById(p+'-'+pan);if(b){b.classList.add('sent');b.textContent='Sent ✓';b.disabled=true;}});const e=document.createElement('div');e.style.cssText='padding:8px 11px;background:#F0FFF4;border-radius:7px;margin-bottom:6px;border-left:3px solid #1E8449;font-size:12px';e.innerHTML=`<strong>${type} sent</strong> to ${name} <span style="color:var(--mu)">· ${t}</span>`;log.prepend(e);}
+
+// CALENDAR
+function renderCal(){document.getElementById('cal-lbl').textContent=MNAMES[calM]+' '+calY;const grid=document.getElementById('cal-grid');grid.innerHTML=DAYS.map(d=>`<div class="cal-dh">${d}</div>`).join('');const first=new Date(calY,calM,1).getDay(),dim=new Date(calY,calM+1,0).getDate(),today=new Date();const aptDates=new Set(appointments.map(a=>a.date));for(let i=0;i<first;i++)grid.innerHTML+=`<div class="cal-cell empty"></div>`;for(let d=1;d<=dim;d++){const ds=`${calY}-${String(calM+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const isToday=today.getFullYear()===calY&&today.getMonth()===calM&&today.getDate()===d;const isSel=selDate===ds,hasApt=aptDates.has(ds);grid.innerHTML+=`<div class="cal-cell${isToday?' today':''}${isSel?' selected':''}${hasApt?' has-apt':''}" onclick="selDate1('${ds}')">${d}</div>`;}}
+function changeMonth(d){calM+=d;if(calM>11){calM=0;calY++;}else if(calM<0){calM=11;calY--;}selDate=null;selSlot=null;renderCal();renderSlots();}
+function selDate1(ds){selDate=ds;selSlot=null;document.getElementById('book-form').style.display='none';renderCal();renderSlots();}
+function renderSlots(){if(!selDate){document.getElementById('slot-grid').innerHTML='';document.getElementById('slot-dlbl').textContent='Select a date';document.getElementById('book-form').style.display='none';return;}const parts=selDate.split('-'),dt=new Date(parts[0],parts[1]-1,parts[2]);document.getElementById('slot-dlbl').textContent=dt.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'});const booked=appointments.filter(a=>a.date===selDate).map(a=>a.slot);document.getElementById('slot-grid').innerHTML=SLOTS.map(s=>{const isB=booked.includes(s),isS=selSlot===s;return`<div class="slot${isB?' booked':isS?' sel-slot':''}" onclick="${isB?'':'selSlot1(\''+s+'\')' }">${s}</div>`;}).join('');document.getElementById('bf-client').innerHTML='<option value="">Select Client</option>'+CLIENTS.map(c=>`<option>${c.name}</option>`).join('');}
+function selSlot1(s){selSlot=s;document.getElementById('book-form').style.display='block';document.getElementById('sel-slot-lbl').textContent='Selected: '+s;renderSlots();}
+function bookApt(){const client=document.getElementById('bf-client').value,purpose=document.getElementById('bf-purpose').value,notes=document.getElementById('bf-notes').value;if(!client){toast('Select a client');return;}appointments.push({id:Date.now(),client,date:selDate,slot:selSlot,purpose,notes,status:'confirmed'});document.getElementById('bf-client').value='';document.getElementById('bf-notes').value='';selSlot=null;document.getElementById('book-form').style.display='none';renderCal();renderSlots();renderAptList();updateAptStats();toast('Booked for '+client+' ✓');}
+function renderAptList(){const fil=appointments.filter(a=>aptFilter==='all'||a.status===aptFilter).sort((a,b)=>a.date.localeCompare(b.date));const body=document.getElementById('apt-list-body');if(!fil.length){body.innerHTML='<div class="empty-state">No appointments</div>';return;}body.innerHTML=fil.map(a=>{const parts=a.date.split('-'),dt=new Date(parts[0],parts[1]-1,parts[2]);const dlbl=dt.toLocaleDateString('en-IN',{day:'numeric',month:'short'});const sc={confirmed:'bg',pending:'ba',completed:'bp'}[a.status];return`<div class="apt-item"><div class="atb"><div class="atd">${dlbl}</div><div class="att">${a.slot}</div></div><div class="apt-info"><div class="apt-cn">${a.client}</div><div class="apt-pu">${a.purpose}${a.notes?' · '+a.notes:''}</div></div><span class="bdg ${sc}" style="margin-right:5px">${a.status}</span><div style="display:flex;gap:3px">${a.status==='pending'?`<button class="apt-ab conf" onclick="changeAptStatus(${a.id},'confirmed')">Confirm</button>`:''} ${a.status!=='completed'?`<button class="apt-ab" onclick="changeAptStatus(${a.id},'completed')">Done</button>`:''}<button class="apt-ab canc" onclick="cancelApt(${a.id})">✕</button></div></div>`;}).join('');}
+function changeAptStatus(id,s){const a=appointments.find(x=>x.id===id);if(a){a.status=s;renderAptList();updateAptStats();renderCal();}}
+function cancelApt(id){appointments=appointments.filter(x=>x.id!==id);renderAptList();updateAptStats();renderCal();renderSlots();}
+function filterApts(f,btn){aptFilter=f;document.querySelectorAll('#asec-apt .stab').forEach(b=>b.classList.remove('active'));btn.classList.add('active');renderAptList();}
+function updateAptStats(){const today=new Date().toISOString().split('T')[0],wEnd=new Date();wEnd.setDate(wEnd.getDate()+7);document.getElementById('apt-today-count').textContent=appointments.filter(a=>a.date===today).length;document.getElementById('apt-week-count').textContent=appointments.filter(a=>a.date>=today&&a.date<=wEnd.toISOString().split('T')[0]).length;document.getElementById('apt-pend-count').textContent=appointments.filter(a=>a.status==='pending').length;document.getElementById('apt-done-count').textContent=appointments.filter(a=>a.status==='completed').length;}
+function renderCal2(){document.getElementById('cal2-lbl').textContent=MNAMES[calM2]+' '+calY2;const grid=document.getElementById('cal2-grid');grid.innerHTML=DAYS.map(d=>`<div class="cal-dh">${d}</div>`).join('');const first=new Date(calY2,calM2,1).getDay(),dim=new Date(calY2,calM2+1,0).getDate(),today=new Date();const myApts=new Set(appointments.filter(a=>a.client==='Rajesh Chopra').map(a=>a.date));for(let i=0;i<first;i++)grid.innerHTML+=`<div class="cal-cell empty"></div>`;for(let d=1;d<=dim;d++){const ds=`${calY2}-${String(calM2+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;const isToday=today.getFullYear()===calY2&&today.getMonth()===calM2&&today.getDate()===d;const isSel=selDate2===ds,hasMine=myApts.has(ds),isPast=new Date(ds)<today&&!isToday;grid.innerHTML+=`<div class="cal-cell${isToday?' today':''}${isSel?' selected':''}${hasMine?' has-apt':''}${isPast?' other-month':''}" onclick="${isPast?'':'selDate2c(\''+ds+'\')' }">${d}</div>`;}}
+function changeMonth2(d){calM2+=d;if(calM2>11){calM2=0;calY2++;}else if(calM2<0){calM2=11;calY2--;}selDate2=null;selSlot2=null;renderCal2();renderSlots2();}
+function selDate2c(ds){selDate2=ds;selSlot2=null;document.getElementById('book-form2').style.display='none';renderCal2();renderSlots2();}
+function renderSlots2(){if(!selDate2){document.getElementById('slot2-grid').innerHTML='';document.getElementById('slot2-dlbl').textContent='Select a date';return;}const parts=selDate2.split('-'),dt=new Date(parts[0],parts[1]-1,parts[2]);document.getElementById('slot2-dlbl').textContent=dt.toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long'});const booked=appointments.filter(a=>a.date===selDate2).map(a=>a.slot);document.getElementById('slot2-grid').innerHTML=SLOTS.map(s=>{const isB=booked.includes(s),isS=selSlot2===s;return`<div class="slot${isB?' booked':isS?' sel-slot':''}" onclick="${isB?'':'selSlot2c(\''+s+'\')' }">${s}</div>`;}).join('');}
+function selSlot2c(s){selSlot2=s;document.getElementById('book-form2').style.display='block';document.getElementById('sel-slot2-lbl').textContent='Selected: '+s;renderSlots2();}
+function bookClientApt(){if(!selDate2||!selSlot2){toast('Select a date and slot');return;}appointments.push({id:Date.now(),client:'Rajesh Chopra',date:selDate2,slot:selSlot2,purpose:document.getElementById('bf2-purpose').value,notes:document.getElementById('bf2-notes').value,status:'pending'});document.getElementById('bf2-notes').value='';selSlot2=null;document.getElementById('book-form2').style.display='none';renderCal2();renderSlots2();renderClientApts();toast('Appointment requested ✓');}
+function renderClientApts(){const mine=appointments.filter(a=>a.client==='Rajesh Chopra').sort((a,b)=>a.date.localeCompare(b.date));const el=document.getElementById('my-apts');if(!mine.length){el.innerHTML='<div class="empty-state">No appointments yet</div>';return;}el.innerHTML=mine.map(a=>{const parts=a.date.split('-'),dt=new Date(parts[0],parts[1]-1,parts[2]);const dlbl=dt.toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});const sc={confirmed:'bg',pending:'ba',completed:'bp'}[a.status];return`<div class="apt-item"><div class="atb"><div class="atd">${dlbl}</div><div class="att">${a.slot}</div></div><div class="apt-info"><div class="apt-cn">${a.purpose}</div><div class="apt-pu">${a.notes||'No notes'}</div></div><span class="bdg ${sc}">${a.status}</span></div>`;}).join('');}
+
+// EMP VIEW
+function renderEmpView(emp){document.getElementById('eavt').textContent=emp.name.split(' ').map(w=>w[0]).join('').slice(0,2);document.getElementById('ename').textContent=emp.name.split(' ')[0];document.getElementById('ewelcome').textContent='Good day, '+emp.name.split(' ')[0];document.getElementById('esub').textContent=emp.dept+' · '+FIRM;document.getElementById('eatt').textContent=emp.attend+'%';document.getElementById('edays').textContent=emp.days;document.getElementById('eprog').textContent=emp.prog+'%';document.getElementById('eprojn').textContent=emp.project.split('–')[0].trim();document.getElementById('pduelbl').textContent='Due: '+emp.due;renderSelfTasks();const pc=emp.prog>=80?'pgr':emp.prog>=60?'pbl':emp.prog>=40?'pam':'pre';document.getElementById('eprojdet').innerHTML=`<div style="font-size:13px;font-weight:500;margin-bottom:2px">${emp.project}</div><div style="font-size:11px;color:var(--mu);margin-bottom:8px">Status: <span class="bdg ${emp.status==='On Track'?'bg':emp.status==='Delayed'?'ba':'br'}">${emp.status}</span></div><div style="display:flex;align-items:center;gap:8px;margin-bottom:11px"><div class="pb" style="flex:1;height:6px"><div class="pf ${pc}" style="width:${emp.prog}%"></div></div><span style="font-size:12px;font-weight:500">${emp.prog}%</span></div><div style="font-size:10px;color:var(--mu);margin-bottom:4px;text-transform:uppercase;letter-spacing:.05em;font-weight:500">Today's output</div><div class="oi"><div style="color:var(--mu);font-size:11px">${emp.output}</div></div>`;}
+function renderSelfTasks(){if(!curEmp)return;const ts=selfTasksMap[curEmp.id]||[];document.getElementById('etcnt').textContent=ts.filter(t=>t.done).length;document.getElementById('selfTaskList').innerHTML=ts.map(t=>`<div class="emp-task-item from-self"><div class="etcb ${t.done?'done':''}" onclick="toggleSelfTask(${t.id})">${t.done?'✓':''}</div><div style="flex:1;min-width:0"><div style="font-size:13px">${t.text}<span class="from-tag from-self-tag">Self</span></div></div></div>`).join('');}
+function toggleSelfTask(id){const ts=selfTasksMap[curEmp.id];const t=ts.find(x=>x.id===id);if(t){t.done=!t.done;renderSelfTasks();}}
+function addSelfTask(){const inp=document.getElementById('ntask'),v=inp.value.trim();if(!v)return;if(!selfTasksMap[curEmp.id])selfTasksMap[curEmp.id]=[];selfTasksMap[curEmp.id].push({text:v,done:false,id:Date.now()});inp.value='';renderSelfTasks();}
+
+// PAYMENT
+function openPay(){document.getElementById('paymw').style.display='flex';document.getElementById('paybody').style.display='block';document.getElementById('paysuc').style.display='none';}
+function closePay(){document.getElementById('paymw').style.display='none';}
+function selM(btn,m){document.querySelectorAll('.ubtn').forEach(b=>b.classList.remove('sel'));btn.classList.add('sel');const ui=document.getElementById('payui');if(m==='upi')ui.innerHTML='<label style="font-size:11px;color:var(--mu);display:block;margin-bottom:4px">Enter UPI ID</label><input class="uinp" type="text" placeholder="yourname@upi">';else if(m==='qr')ui.innerHTML='<div style="text-align:center;padding:14px;background:#F2F0EA;border-radius:8px;margin-bottom:9px"><div style="width:68px;height:68px;background:#1B4F72;border-radius:5px;margin:0 auto 6px"></div><div style="font-size:11px;color:var(--mu)">Scan with GPay / PhonePe / Paytm</div></div>';else if(m==='card')ui.innerHTML='<input class="uinp" type="text" placeholder="Card number"><div style="display:flex;gap:7px"><input class="uinp" type="text" placeholder="MM/YY" style="width:50%"><input class="uinp" type="text" placeholder="CVV" style="width:50%"></div>';else ui.innerHTML='<select style="width:100%;padding:8px 10px;border:1.5px solid var(--bd);border-radius:7px;font-size:12px;font-family:DM Sans,sans-serif;outline:none;margin-bottom:9px;background:#fff"><option>State Bank of India</option><option>HDFC Bank</option><option>ICICI Bank</option><option>Axis Bank</option></select>';}
+function doPay(){document.getElementById('paybody').style.display='none';document.getElementById('paysuc').style.display='block';document.getElementById('payref').textContent=Math.random().toString(36).slice(2,8).toUpperCase();}
+
+// AUTO-INIT INV TOTAL
+document.addEventListener('DOMContentLoaded',()=>{document.addEventListener('input',e=>{if(e.target.matches('.inv-item-row input'))updateInvTotal();});});
+</script>
+</body>
+</html>
